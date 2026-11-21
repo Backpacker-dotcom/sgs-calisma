@@ -115,7 +115,7 @@
    "count": 61
   },
   "l_fm01": {
-   "file": "b814e5dfb889915c156f.bin",
+   "file": "48a02ff260c932d56a70.bin",
    "size": 17482,
    "title": "1 · Muhasebenin dili: varlık, kaynak ve bilanço",
    "kind": "lesson",
@@ -219,7 +219,7 @@
    "count": 1
   },
   "l_fm02": {
-   "file": "1fb5d85b90640c819880.bin",
+   "file": "d8ebcb67c54f7fc953a6.bin",
    "size": 9632,
    "title": "2 · Hazır değerler ve KDV: paranın muhasebesi",
    "kind": "lesson",
@@ -227,7 +227,7 @@
    "count": null
   },
   "l_fm03": {
-   "file": "3550dce9abd88080c44b.bin",
+   "file": "07cd40ba04c700dfb565.bin",
    "size": 8546,
    "title": "3 · Menkul kıymetler: kısa vadeli yatırımlar",
    "kind": "lesson",
@@ -1467,7 +1467,7 @@
    "count": 26
   },
   "g_teknik": {
-   "file": "66c1b2562669809b24aa.bin",
+   "file": "35a966a2c336ca68e822.bin",
    "size": 4517,
    "title": "Hafıza Atölyesi: nasıl çalışacağız?",
    "kind": "guide",
@@ -1475,7 +1475,7 @@
    "count": null
   },
   "t_genel": {
-   "file": "80f44384aedf7ef385a2.bin",
+   "file": "78c3be0a7b94b48b38a7.bin",
    "size": 1700,
    "title": "Genel kodlar ve farklar",
    "kind": "tools",
@@ -1483,7 +1483,7 @@
    "count": null
   },
   "l_fm04": {
-   "file": "e880110b7a16ba031ba1.bin",
+   "file": "c84db971b8b2432d61cf.bin",
    "size": 8314,
    "title": "4 · Ticari alacaklar: acentenin borcu, senet ve şüpheli alacak",
    "kind": "lesson",
@@ -1491,9 +1491,49 @@
    "count": null
   },
   "l_fm05": {
-   "file": "54bceb64a598c987ce9d.bin",
+   "file": "43f4b75531744ed692de.bin",
    "size": 7906,
    "title": "5 · Stoklar: minibar şişesinden satılan malın maliyetine",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm06": {
+   "file": "8161a6217b1869f9e2bc.bin",
+   "size": 7017,
+   "title": "6 · Diğer dönen varlıklar: peşin kira, tahakkuklar, avanslar",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm07": {
+   "file": "5a44f6f10e7b787d7323.bin",
+   "size": 10182,
+   "title": "7 · Duran varlıklar ve amortisman",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm08": {
+   "file": "ca64cc7b64b12a80f25b.bin",
+   "size": 7553,
+   "title": "8 · Borçlar: kredi, tedarikçi, kapora ve bordro",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm09": {
+   "file": "e6eea15dd9f250c063d3.bin",
+   "size": 6522,
+   "title": "9 · Özkaynaklar: sermaye, yedekler ve kâr dağıtımı",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm10": {
+   "file": "9d07015c84255a020b11.bin",
+   "size": 7723,
+   "title": "10 · Dönem sonu ve gelir tablosu",
    "kind": "lesson",
    "subject": "fm",
    "count": null
