@@ -1,0 +1,198 @@
+name: APK oluştur
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/android.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: "8.10.2"
+      - name: Android projesini hazırla
+        run: |
+          set -e
+          A=build-android
+          J=$A/app/src/main/java/com/backpacker/sgs
+          mkdir -p $J $A/app/src/main/res/values $A/app/src/main/res/drawable
+          cat > $A/settings.gradle <<'EOF'
+          pluginManagement { repositories { google(); mavenCentral(); gradlePluginPortal() } }
+          dependencyResolutionManagement { repositories { google(); mavenCentral() } }
+          rootProject.name = "SGS"
+          include ':app'
+          EOF
+          cat > $A/build.gradle <<'EOF'
+          plugins { id 'com.android.application' version '8.5.2' apply false }
+          EOF
+          cat > $A/gradle.properties <<'EOF'
+          org.gradle.jvmargs=-Xmx2048m
+          android.useAndroidX=false
+          android.nonTransitiveRClass=true
+          EOF
+          cat > $A/app/build.gradle <<'EOF'
+          plugins { id 'com.android.application' }
+          def runNo = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger()
+          android {
+              namespace 'com.backpacker.sgs'
+              compileSdk 34
+              defaultConfig { applicationId 'com.backpacker.sgs'; minSdk 24; targetSdk 34; versionCode runNo; versionName "1.0." + runNo }
+              signingConfigs { release { storeFile file(System.getenv("SIGNING_KEYSTORE")); storeType 'PKCS12'; storePassword 'sgscalisma'; keyAlias 'sgs'; keyPassword 'sgscalisma' } }
+              buildTypes { release { minifyEnabled false; signingConfig signingConfigs.release } }
+              compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+              lint { abortOnError false; checkReleaseBuilds false }
+          }
+          EOF
+          cat > $A/app/src/main/AndroidManifest.xml <<'EOF'
+          <?xml version="1.0" encoding="utf-8"?>
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+              <uses-permission android:name="android.permission.INTERNET" />
+              <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+              <application android:label="SGS Çalışma" android:icon="@drawable/ic_launcher" android:roundIcon="@drawable/ic_launcher"
+                  android:allowBackup="true" android:theme="@style/AppTheme" android:hardwareAccelerated="true">
+                  <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTask"
+                      android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode|smallestScreenSize"
+                      android:windowSoftInputMode="adjustResize">
+                      <intent-filter>
+                          <action android:name="android.intent.action.MAIN" />
+                          <category android:name="android.intent.category.LAUNCHER" />
+                      </intent-filter>
+                  </activity>
+              </application>
+          </manifest>
+          EOF
+          cat > $A/app/src/main/res/values/styles.xml <<'EOF'
+          <resources>
+              <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
+                  <item name="android:statusBarColor">#14213D</item>
+                  <item name="android:navigationBarColor">#14213D</item>
+                  <item name="android:windowBackground">#F6F4EF</item>
+              </style>
+          </resources>
+          EOF
+          cat > $A/app/src/main/res/drawable/ic_launcher.xml <<'EOF'
+          <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+              <path android:fillColor="#14213D" android:pathData="M0,0h108v108h-108z"/>
+              <path android:fillColor="#EFE9DC" android:pathData="M28,30h24c6,0 10,4 10,10v40c0,-5 -4,-8 -9,-8H28z"/>
+              <path android:fillColor="#B08D3C" android:pathData="M80,30H66c-2,0 -4,2 -4,4v46c0,-5 4,-8 9,-8h9z"/>
+          </vector>
+          EOF
+          cat > $J/MainActivity.java <<'EOF'
+          package com.backpacker.sgs;
+
+          import android.app.Activity;
+          import android.content.ClipData;
+          import android.content.ClipboardManager;
+          import android.content.ContentValues;
+          import android.content.Context;
+          import android.content.Intent;
+          import android.net.Uri;
+          import android.os.Build;
+          import android.os.Bundle;
+          import android.os.Environment;
+          import android.provider.MediaStore;
+          import android.webkit.JavascriptInterface;
+          import android.webkit.ValueCallback;
+          import android.webkit.WebChromeClient;
+          import android.webkit.WebResourceRequest;
+          import android.webkit.WebSettings;
+          import android.webkit.WebView;
+          import android.webkit.WebViewClient;
+          import java.io.File;
+          import java.io.FileOutputStream;
+          import java.io.OutputStream;
+          import java.nio.charset.StandardCharsets;
+
+          public class MainActivity extends Activity {
+              static final String HOME = "https://backpacker-dotcom.github.io/sgs-calisma/";
+              WebView web;
+              ValueCallback<Uri[]> fileCb;
+
+              @Override protected void onCreate(Bundle b) {
+                  super.onCreate(b);
+                  web = new WebView(this);
+                  setContentView(web);
+                  WebSettings s = web.getSettings();
+                  s.setJavaScriptEnabled(true);
+                  s.setDomStorageEnabled(true);
+                  s.setDatabaseEnabled(true);
+                  s.setCacheMode(WebSettings.LOAD_DEFAULT);
+                  s.setMediaPlaybackRequiresUserGesture(false);
+                  s.setSupportZoom(true); s.setBuiltInZoomControls(true); s.setDisplayZoomControls(false);
+                  web.addJavascriptInterface(new Bridge(), "SGSAndroid");
+                  web.setWebViewClient(new WebViewClient() {
+                      @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) {
+                          Uri u = r.getUrl();
+                          if (u.toString().startsWith(HOME)) return false;
+                          openExternal(u); return true;
+                      }
+                  });
+                  web.setWebChromeClient(new WebChromeClient() {
+                      @Override public boolean onShowFileChooser(WebView v, ValueCallback<Uri[]> cb, FileChooserParams p) {
+                          if (fileCb != null) fileCb.onReceiveValue(null);
+                          fileCb = cb;
+                          Intent i = new Intent(Intent.ACTION_GET_CONTENT); i.addCategory(Intent.CATEGORY_OPENABLE); i.setType("*/*");
+                          startActivityForResult(Intent.createChooser(i, "Yedek dosyası"), 7); return true;
+                      }
+                  });
+                  if (b != null) web.restoreState(b); else web.loadUrl(HOME);
+              }
+              void openExternal(Uri u) { try { startActivity(new Intent(Intent.ACTION_VIEW, u)); } catch (Exception e) { } }
+              @Override protected void onActivityResult(int req, int res, Intent data) {
+                  if (req == 7 && fileCb != null) { fileCb.onReceiveValue(res == RESULT_OK && data != null && data.getData() != null ? new Uri[]{data.getData()} : null); fileCb = null; }
+              }
+              @Override protected void onSaveInstanceState(Bundle o) { super.onSaveInstanceState(o); web.saveState(o); }
+              @Override public void onBackPressed() { if (web.canGoBack()) web.goBack(); else super.onBackPressed(); }
+
+              class Bridge {
+                  @JavascriptInterface public void copy(String t) {
+                      runOnUiThread(() -> { ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE); cm.setPrimaryClip(ClipData.newPlainText("SGS", t)); });
+                  }
+                  @JavascriptInterface public void open(String url) { runOnUiThread(() -> openExternal(Uri.parse(url))); }
+                  @JavascriptInterface public void save(String name, String text) {
+                      try {
+                          byte[] data = text.getBytes(StandardCharsets.UTF_8);
+                          if (Build.VERSION.SDK_INT >= 29) {
+                              ContentValues cv = new ContentValues();
+                              cv.put(MediaStore.Downloads.DISPLAY_NAME, name); cv.put(MediaStore.Downloads.MIME_TYPE, "application/json");
+                              Uri u = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, cv);
+                              try (OutputStream os = getContentResolver().openOutputStream(u)) { os.write(data); }
+                          } else {
+                              File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), name);
+                              try (FileOutputStream os = new FileOutputStream(f)) { os.write(data); }
+                          }
+                      } catch (Exception e) { }
+                  }
+              }
+          }
+          EOF
+      - name: İmza anahtarı
+        run: |
+          if [ ! -f release.keystore ]; then
+            keytool -genkeypair -keystore release.keystore -storetype PKCS12 -alias sgs -keyalg RSA -keysize 2048 -validity 10000 -storepass sgscalisma -keypass sgscalisma -dname "CN=SGS, O=Backpacker, C=TR"
+            git config user.name "github-actions"; git config user.email "actions@github.com"
+            git add release.keystore; git commit -m "İmza anahtarı [skip ci]"; git push origin HEAD:main || true
+          fi
+          echo "SIGNING_KEYSTORE=$GITHUB_WORKSPACE/release.keystore" >> "$GITHUB_ENV"
+      - name: APK derle
+        working-directory: build-android
+        run: gradle --no-daemon assembleRelease
+      - name: APK'yı depoya koy
+        run: |
+          cp build-android/app/build/outputs/apk/release/app-release.apk SGS.apk
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git pull --rebase origin main || true
+          git add SGS.apk; git commit -m "APK güncellendi [skip ci]" || true
+          git push origin HEAD:main

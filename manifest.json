@@ -1,0 +1,302 @@
+{
+ "v": 1,
+ "kdf": {
+  "alg": "PBKDF2-SHA256",
+  "iter": 310000,
+  "salt": "FmvQ0JYrHXmyUP5AaPEVtA=="
+ },
+ "key": {
+  "iv": "6x530Apf4FEpr2Ol",
+  "data": "bBJNvDVE8WXJkQO1AcY9fz31tRB6wChHYsBo40iZYI0Z4qkHkaF96cor8RGBoKCV"
+ },
+ "packs": {
+  "q_muh_tarama": {
+   "file": "84e820078ce94bb869be.bin",
+   "size": 3720907,
+   "title": "Prensip · Muhasebe tarama testleri",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 200
+  },
+  "q_kamp_muhasebe": {
+   "file": "ec0bdc84d30b97f90eaf.bin",
+   "size": 2996112,
+   "title": "Prensip · Muhasebe kamp",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 130
+  },
+  "q_fm_dersnotu": {
+   "file": "b4adf4d9b32f3457830c.bin",
+   "size": 6787893,
+   "title": "Prensip · Ders notu konu testleri",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 301
+  },
+  "q_deneme_7BKLL": {
+   "file": "fd142cce56fc00adeeb0.bin",
+   "size": 1888045,
+   "title": "Prensip · Finansal muhasebe testleri",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 118
+  },
+  "q_kamp_standartlar": {
+   "file": "720a03e0e996aab987c2.bin",
+   "size": 5218601,
+   "title": "Prensip · Standartlar kamp",
+   "kind": "questions",
+   "subject": "std",
+   "count": 195
+  },
+  "q_maliyet_tarama": {
+   "file": "6fbf8f70a5343084df10.bin",
+   "size": 2136495,
+   "title": "Prensip · Maliyet tarama",
+   "kind": "questions",
+   "subject": "mlt",
+   "count": 95
+  },
+  "q_kamp_maliyet": {
+   "file": "41ca27736051ca46b59b.bin",
+   "size": 2249316,
+   "title": "Prensip · Maliyet kamp",
+   "kind": "questions",
+   "subject": "mlt",
+   "count": 79
+  },
+  "q_analiz_tarama": {
+   "file": "c695befdec9ce968b10a.bin",
+   "size": 2662424,
+   "title": "Prensip · Analiz tarama",
+   "kind": "questions",
+   "subject": "anz",
+   "count": 198
+  },
+  "q_kamp_analiz": {
+   "file": "c0120305b48228cb9800.bin",
+   "size": 79253,
+   "title": "Prensip · Analiz kamp",
+   "kind": "questions",
+   "subject": "anz",
+   "count": 1
+  },
+  "q_denetim_bolumsorulari": {
+   "file": "61654b91a42c02bf187f.bin",
+   "size": 3614343,
+   "title": "Prensip · Denetim bölüm soruları",
+   "kind": "questions",
+   "subject": "dnt",
+   "count": 200
+  },
+  "q_vergi_tarama": {
+   "file": "c705431a92239b34402f.bin",
+   "size": 1690911,
+   "title": "Prensip · Vergi tarama",
+   "kind": "questions",
+   "subject": "vrg",
+   "count": 100
+  },
+  "q_ticaret_tarama": {
+   "file": "165504680ca3c60c6848.bin",
+   "size": 1639754,
+   "title": "Prensip · Ticaret tarama",
+   "kind": "questions",
+   "subject": "tic",
+   "count": 114
+  },
+  "q_kamp_ticaret": {
+   "file": "80dd0183fe49301fbf81.bin",
+   "size": 2213340,
+   "title": "Prensip · Ticaret kamp",
+   "kind": "questions",
+   "subject": "tic",
+   "count": 113
+  },
+  "q_borclar_tarama": {
+   "file": "9a17d910c38a0c2adcbf.bin",
+   "size": 854153,
+   "title": "Prensip · Borçlar tarama",
+   "kind": "questions",
+   "subject": "brc",
+   "count": 65
+  },
+  "q_kamp_borclar": {
+   "file": "aa718733533c563a8765.bin",
+   "size": 2749181,
+   "title": "Prensip · Borçlar kamp",
+   "kind": "questions",
+   "subject": "brc",
+   "count": 126
+  },
+  "q_is_tarama": {
+   "file": "a6afb6665168ad962a5d.bin",
+   "size": 1392623,
+   "title": "Prensip · İş ve SGK tarama",
+   "kind": "questions",
+   "subject": "is",
+   "count": 87
+  },
+  "q_kamp_is": {
+   "file": "d7261ea8f3491d98c890.bin",
+   "size": 2951490,
+   "title": "Prensip · İş ve SGK kamp",
+   "kind": "questions",
+   "subject": "is",
+   "count": 143
+  },
+  "q_meslek_tarama": {
+   "file": "dc581280b3d7a43e239a.bin",
+   "size": 5432334,
+   "title": "Prensip · Meslek hukuku tarama",
+   "kind": "questions",
+   "subject": "mes",
+   "count": 200
+  },
+  "q_kamp_meslek": {
+   "file": "75358b79bd552129710b.bin",
+   "size": 5394934,
+   "title": "Prensip · Meslek hukuku kamp",
+   "kind": "questions",
+   "subject": "mes",
+   "count": 166
+  },
+  "q_hukuk_grubu_tarama": {
+   "file": "5e9e333d5a0da6b3724d.bin",
+   "size": 3914518,
+   "title": "Prensip · Hukuk grubu tarama",
+   "kind": "questions",
+   "subject": "hk",
+   "count": 216
+  },
+  "q_deneme_vzvAW": {
+   "file": "a57f3e41863ccf90b66f.bin",
+   "size": 17155305,
+   "title": "Prensip · SGS denemeleri (130 soru)",
+   "kind": "questions",
+   "subject": "deneme",
+   "count": 904
+  },
+  "q_kamp_denetim": {
+   "file": "02342fc31b361a3a5e13.bin",
+   "size": 1452411,
+   "title": "Prensip · Denetim kamp",
+   "kind": "questions",
+   "subject": "dnt",
+   "count": 90
+  },
+  "d_fm_dersnotu": {
+   "file": "0ec5817f4fa6661e4583.bin",
+   "size": 9656903,
+   "title": "Prensip · Finansal Muhasebe ders notu",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 118
+  },
+  "d_standartlar_dersnotu": {
+   "file": "f51cb460b50bc35c3a68.bin",
+   "size": 6594598,
+   "title": "Prensip · Standartlar ders notu",
+   "kind": "doc",
+   "subject": "std",
+   "count": 65
+  },
+  "d_maliyet_dersnotu": {
+   "file": "293122c3abb9dcf1570a.bin",
+   "size": 4735174,
+   "title": "Prensip · Maliyet ders notu",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 50
+  },
+  "d_analiz_dersnotu": {
+   "file": "16b2a987ed3d364bcdce.bin",
+   "size": 6162219,
+   "title": "Prensip · Analiz ders notu",
+   "kind": "doc",
+   "subject": "anz",
+   "count": 173
+  },
+  "d_denetim_dersnotu": {
+   "file": "724c53cd06ed1a46171b.bin",
+   "size": 7901669,
+   "title": "Prensip · Denetim ders notu",
+   "kind": "doc",
+   "subject": "dnt",
+   "count": 160
+  },
+  "d_denetim_sorucevap": {
+   "file": "bb4bc02c606097e3a14b.bin",
+   "size": 937685,
+   "title": "Prensip · Denetim soru-cevap",
+   "kind": "doc",
+   "subject": "dnt",
+   "count": 11
+  },
+  "d_ekonomi_dersnotu": {
+   "file": "365834dd5ba5965825b3.bin",
+   "size": 6016764,
+   "title": "Prensip · Ekonomi ders notu",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 54
+  },
+  "d_maliye_dersnotu": {
+   "file": "2883d31fe83c3a661462.bin",
+   "size": 10437514,
+   "title": "Prensip · Maliye ders notu",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 155
+  },
+  "d_vergi_dersnotu": {
+   "file": "ffb442c3246e5780bc72.bin",
+   "size": 21426377,
+   "title": "Prensip · Vergi Hukuku ders notu",
+   "kind": "doc",
+   "subject": "vrg",
+   "count": 214
+  },
+  "d_ticaret_dersnotu": {
+   "file": "dcbae6b4b0f9ba6cd8b4.bin",
+   "size": 3849395,
+   "title": "Prensip · Ticaret Hukuku ders notu",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 133
+  },
+  "d_borclar_dersnotu": {
+   "file": "0c4654ca4b20cf36c87a.bin",
+   "size": 5824959,
+   "title": "Prensip · Borçlar Hukuku ders notu",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 160
+  },
+  "d_is_dersnotu": {
+   "file": "29386a9ecacc6e8d2158.bin",
+   "size": 7224913,
+   "title": "Prensip · İş Hukuku ders notu",
+   "kind": "doc",
+   "subject": "is",
+   "count": 66
+  },
+  "d_meslek_dersnotu": {
+   "file": "c76faf8cca4ef9d4ec00.bin",
+   "size": 6474044,
+   "title": "Prensip · Meslek Hukuku ders notu",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 61
+  },
+  "l_fm01": {
+   "file": "2413af2b30713a998ba3.bin",
+   "size": 10444,
+   "title": "1 · Muhasebenin dili: varlık, kaynak ve bilanço",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  }
+ }
+}
