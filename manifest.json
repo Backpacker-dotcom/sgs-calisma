@@ -115,8 +115,8 @@
    "count": 61
   },
   "l_fm01": {
-   "file": "2413af2b30713a998ba3.bin",
-   "size": 10444,
+   "file": "b814e5dfb889915c156f.bin",
+   "size": 17482,
    "title": "1 · Muhasebenin dili: varlık, kaynak ve bilanço",
    "kind": "lesson",
    "subject": "fm",
@@ -219,16 +219,16 @@
    "count": 1
   },
   "l_fm02": {
-   "file": "87c2b415d483d827089d.bin",
-   "size": 6040,
+   "file": "1fb5d85b90640c819880.bin",
+   "size": 9632,
    "title": "2 · Hazır değerler ve KDV: paranın muhasebesi",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm03": {
-   "file": "12bec336e6e178036e20.bin",
-   "size": 5433,
+   "file": "3550dce9abd88080c44b.bin",
+   "size": 8546,
    "title": "3 · Menkul kıymetler: kısa vadeli yatırımlar",
    "kind": "lesson",
    "subject": "fm",
@@ -1465,6 +1465,38 @@
    "kind": "doc",
    "subject": "deneme",
    "count": 26
+  },
+  "g_teknik": {
+   "file": "66c1b2562669809b24aa.bin",
+   "size": 4517,
+   "title": "Hafıza Atölyesi: nasıl çalışacağız?",
+   "kind": "guide",
+   "subject": "genel",
+   "count": null
+  },
+  "t_genel": {
+   "file": "80f44384aedf7ef385a2.bin",
+   "size": 1700,
+   "title": "Genel kodlar ve farklar",
+   "kind": "tools",
+   "subject": "genel",
+   "count": null
+  },
+  "l_fm04": {
+   "file": "e880110b7a16ba031ba1.bin",
+   "size": 8314,
+   "title": "4 · Ticari alacaklar: acentenin borcu, senet ve şüpheli alacak",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm05": {
+   "file": "54bceb64a598c987ce9d.bin",
+   "size": 7906,
+   "title": "5 · Stoklar: minibar şişesinden satılan malın maliyetine",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
   }
  }
 }

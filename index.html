@@ -77,6 +77,7 @@ table.res{width:100%;border-collapse:collapse;font-size:14px}table.res td,table.
 .lesson th{background:var(--soft)}.lesson td.n{text-align:right;font-variant-numeric:tabular-nums}
 .lesson .yev td:first-child{width:58%}.lesson details{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0}
 .lesson summary{font-weight:600;cursor:pointer}
+.lesson td.kapali{color:transparent;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 6px,var(--card) 6px,var(--card) 12px);cursor:pointer}
 </style>
 </head>
 <body>
@@ -112,7 +113,7 @@ const idb = (()=>{let p;function db(){return p||(p=new Promise((res,rej)=>{const
   async function op(store,mode,fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction(store,mode);const r=fn(t.objectStore(store));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})}
   return{get:(s,k)=>op(s,'readonly',o=>o.get(k)),set:(s,k,v)=>op(s,'readwrite',o=>o.put(v,k)),del:(s,k)=>op(s,'readwrite',o=>o.delete(k)),keys:s=>op(s,'readonly',o=>o.getAllKeys())}})();
 
-let S = {ans:{}, marks:{}, denemeler:{}, daily:{}, set:{pen:'any',per:20}};
+let S = {ans:{}, marks:{}, denemeler:{}, daily:{}, set:{pen:'any',per:20}, cards:{}, done:{}, dinlet:{}, feyn:{}, saray:{}};
 function loadState(){try{const x=JSON.parse(localStorage.getItem('sgs_state')||'null');if(x)S=Object.assign(S,x)}catch(e){}}
 let saveT; function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem('sgs_state',JSON.stringify(S))}catch(e){toast('Kayıt alanı doldu, yedek alın')}},150)}
 
@@ -163,7 +164,7 @@ const app=$('#app'); let ROUTE=[];
 function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
 function shell(title,html,{back=true,tab}={}){
   app.innerHTML=`<header class="top">${back?'<button class="back" data-back>‹</button>':''}<h1>${esc(title)}</h1></header><main>${html}</main>
-  <nav class="tabs">${[['bugun','☀','Bugün'],['dersler','📚','Dersler'],['deneme','📝','Deneme'],['tekrar','🔁','Tekrar'],['ayar','⚙','Ayarlar']].map(([k,i,t])=>`<button data-tab="${k}" class="${tab===k?'on':''}"><b>${i}</b>${t}</button>`).join('')}</nav>`;
+  <nav class="tabs">${[['bugun','☀','Bugün'],['dersler','📚','Dersler'],['deneme','📝','Deneme'],['hafiza','🧠','Hafıza'],['ayar','⚙','Ayarlar']].map(([k,i,t])=>`<button data-tab="${k}" class="${tab===k?'on':''}"><b>${i}</b>${t}</button>`).join('')}</nav>`;
   window.scrollTo(0,0);
 }
 document.addEventListener('click',e=>{
@@ -189,10 +190,18 @@ VIEWS.bugun=async()=>{
   subs.sort((a,b)=>subjStats(a).seen-subjStats(b).seen);
   const oneri=subs.slice(0,2);
   const hafta=Object.entries(S.daily).filter(([k])=>+k>today()-7*DAY).reduce((s,[k,v])=>s+v.n,0);
+  const dueC=(await allCards()).filter(cardDue).length, din=dinletDue();
+  const lps=(await lessonPacks()).sort((a,b)=>a.pid.localeCompare(b.pid)); const cig=lps.find(p=>!S.done[p.pid]);
+  const hafiz=`<h3 class="sec">Hafız düzeni</h3><div class="card">
+   <div class="row" style="justify-content:space-between;margin-bottom:8px"><div><b>1 · Pişmiş</b><div class="mut">Dünkü ve zamanı gelen kartlar</div></div>${dueC?`<button class="btn small" data-go='["kartlar",{}]'>${dueC} kart</button>`:'<span class="pill">✓ yok</span>'}</div>
+   <div class="row" style="justify-content:space-between;margin-bottom:8px"><div><b>2 · Dinletme</b><div class="mut">Bitirdiğin dersi kendi cümlenle anlat</div></div>${din.length?`<button class="btn small" data-go='["okuma","${din[0].pid}"]'>${din.length} ders</button>`:'<span class="pill">✓ yok</span>'}</div>
+   <div class="row" style="justify-content:space-between"><div><b>3 · Çiğ</b><div class="mut">${cig?esc(cig.title):'Yeni anlatımlar hazırlanıyor'}</div></div>${cig?`<button class="btn small" data-go='["okuma","${cig.pid}"]'>Yeni ders</button>`:''}</div>
+  </div>`;
   shell('Bugün',`
    <div class="card"><div class="stat"><div><b>${td_.n}</b><span class="mut">bugün çözülen</span></div><div><b>${pct(td_.ok,td_.n)}%</b><span class="mut">bugünkü başarı</span></div><div><b>${hafta}</b><span class="mut">son 7 gün</span></div></div></div>
    ${dueAll?`<div class="card"><h3 style="margin:0 0 6px">🔁 Tekrar zamanı gelen ${dueAll} soru</h3><p class="mut" style="margin:0 0 10px">Daha önce yanlış yaptığın sorular. Önce bunlar, çünkü unutmadan pekişsinler.</p><button class="btn" data-go='["oturum",{"mode":"due"}]'>Tekrara başla</button></div>`:''}
-   <h3 class="sec">Bugünün önerisi</h3>
+   ${hafiz}
+   <h3 class="sec">Soru çöz</h3>
    ${oneri.map(s=>{const st=subjStats(s);return`<div class="card"><h3 style="margin:0">${esc(SUBJ_AD[s])}</h3><p class="mut" style="margin:4px 0 10px">${st.seen?`${st.seen} farklı soru gördün, başarı %${pct(st.ok,st.n)}`:'Henüz başlamadın. 20 soruluk bir setle tanışalım.'}</p><div class="row"><button class="btn" data-go='["oturum",{"mode":"yeni","sub":"${s}"}]'>${S.set.per} yeni soru</button><button class="btn alt" data-go='["ders","${s}"]'>Derse git</button></div></div>`}).join('')}
    <p class="mut">Sayaç yok, acele yok. Her soruda kalemle karalayabilir, takıldığın yerde <b>Sor</b> düğmesiyle bana sorabilirsin.</p>`,{back:false,tab:'bugun'});
 };
@@ -316,8 +325,9 @@ function initInkTools(key){initInk(key)}
 VIEWS.okuma=async(pid,startPage)=>{
   shell('Açılıyor',`<div class="card"><span class="spin"></span> Sayfalar açılıyor…</div>`,{tab:'dersler'});
   const pk=await loadPack(pid);
-  if(pk.kind==='lesson'){ // HTML anlatım
-    shell(pk.title,`<article class="card lesson">${td.decode(pk.raw(pk.html))}</article>`,{tab:'dersler'});return}
+  if(pk.kind==='lesson'||pk.kind==='guide'){ // HTML anlatım
+    shell(pk.title,`<article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
+    if(pk.tools)bindDersSonu(pk);return}
   let i=startPage??(S.marks['read_'+pid]||0);
   const show=()=>{S.marks['read_'+pid]=i;save();
     shell(`${pk.title} · ${i+1}/${pk.pages.length}`,`<div class="qwrap page-wrap" id="qw"><img id="qimg" src="${pk.url(pk.pages[i])}" alt="Sayfa ${i+1}"><canvas id="ink"></canvas></div>${inkTools()}
@@ -368,6 +378,113 @@ VIEWS.denemeOturum=async(pid,g)=>{
   };
   draw();
 };
+
+
+/* ====== Hafıza Atölyesi ====== */
+const CARD_DAYS=[1,3,7,14,30,60];
+const DINLET=[1,7,14,30];
+async function lessonPacks(){const m=await getManifest();return Object.entries(m.packs).filter(([k,v])=>v.kind==='lesson').map(([k,v])=>Object.assign({pid:k},v))}
+async function toolPacks(){const m=await getManifest();return Object.entries(m.packs).filter(([k,v])=>v.kind==='lesson'||v.kind==='tools').map(([k,v])=>Object.assign({pid:k},v))}
+function cardsOf(pk){return (pk.tools&&pk.tools.kartlar||[]).map((c,i)=>Object.assign({id:pk.pid+':'+i,sub:pk.subject,src:pk.title},c))}
+async function allCards(onlyDone=true){const out=[];for(const p of await lessonPacks()){if(onlyDone&&!S.done[p.pid])continue;const pk=await loadPack(p.pid);out.push(...cardsOf(pk))}return out}
+const cardDue=c=>{const st=S.cards[c.id];return !st||st.due<=today()};
+function dinletDue(){const out=[];for(const[pid,d]of Object.entries(S.done)){const dn=S.dinlet[pid]||[];for(const o of DINLET){if(dn.includes(o))continue;if(d+o*DAY<=today()){out.push({pid,o});break}}}return out}
+function dersSonu(pk){
+  const t=pk.tools;const done=S.done[pk.pid];
+  let h=`<div class="card"><h2 style="margin:0 0 6px">Ders sonu</h2><p class="mut" style="margin:0 0 10px">Okuduğunu kalıcı yapmak için sırayla: kod, fark tablosu, saray turu, kartlar ve son olarak anlat.</p>
+  ${done?`<div class="pill">✓ ${new Date(done).toLocaleDateString('tr-TR')} tarihinde bitirildi · dinletmeler 1, 7, 14 ve 30. günde</div>`:`<button class="btn" id="dbitir">Dersi bitirdim: kartları ve dinletmeleri başlat</button>`}</div>`;
+  if(t.kodlar&&t.kodlar.length)h+=`<h3 class="sec">🔑 Kodlar</h3>`+t.kodlar.map(kodHtml).join('');
+  if(t.farklar&&t.farklar.length)h+=`<h3 class="sec">⚖️ Fark tabloları</h3>`+t.farklar.map(farkHtml).join('');
+  if(t.saray)h+=`<h3 class="sec">🏨 Hafıza sarayı</h3><button class="subj" data-go='["saray","${pk.pid}"]'><h3>${esc(t.saray.ad)}</h3><div class="mut">${t.saray.duraklar.length} durak · rehberli tur ve yoklama${S.saray[pk.pid]!=null?' · son yoklama: '+S.saray[pk.pid]+'/'+t.saray.duraklar.length:''}</div></button>`;
+  if(t.kartlar&&t.kartlar.length)h+=`<h3 class="sec">🃏 Kartlar</h3><button class="subj" data-go='["kartlar",{"pid":"${pk.pid}","hepsi":true}]'><h3>Bu dersin ${t.kartlar.length} kartını çalış</h3><div class="mut">Ders bitince kartlar aralıklı tekrar destene de eklenir.</div></button>`;
+  if(t.feynman)h+=feynHtml(pk);
+  return h;
+}
+function kodHtml(k){return`<details class="card" style="padding:12px 14px"><summary style="font-size:17px">${esc(k.kod)}</summary><p style="margin:8px 0 4px">${esc(k.acilim)}</p>${k.ipucu?`<p class="mut" style="margin:0">💡 ${esc(k.ipucu)}</p>`:''}</details>`}
+function farkHtml(f,i){const id='f'+Math.random().toString(36).slice(2,7);return`<div class="card" style="padding:12px"><div class="row" style="justify-content:space-between"><b>${esc(f.baslik)}</b><button class="btn alt small" data-yokla="${id}">Kendini yokla</button></div>
+  <div class="lesson"><table id="${id}"><tr><th></th>${f.kolonlar.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${f.satirlar.map(r=>`<tr><td><b>${esc(r[0])}</b></td>${r.slice(1).map(c=>`<td class="fc">${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div></div>`}
+function bindFark(root=document){root.querySelectorAll('[data-yokla]').forEach(b=>b.onclick=()=>{const tb=document.getElementById(b.dataset.yokla);const on=!tb.classList.contains('gizli');tb.classList.toggle('gizli',on);b.textContent=on?'Hepsini göster':'Kendini yokla';tb.querySelectorAll('td.fc').forEach(td=>{td.classList.toggle('kapali',on);td.onclick=()=>td.classList.remove('kapali')})})}
+function feynHtml(pk){const f=pk.tools.feynman;const last=(S.feyn[pk.pid]||[]).slice(-1)[0];return`<h3 class="sec">🗣️ Anlat (Feynman)</h3><div class="card"><p style="margin:0 0 8px"><b>Görev:</b> ${esc(f.gorev)}</p>
+  <textarea id="fey" rows="6" placeholder="Kitaba bakmadan, kendi cümlelerinle yaz. Telefon klavyesindeki mikrofona basıp konuşarak da yazabilirsin.">${esc(last?last.text:'')}</textarea>
+  <p class="mut" style="margin:10px 0 4px">Anlatımında bunlar var mı?</p>${f.kontrol.map((k,i)=>`<label style="display:block;margin:4px 0"><input type="checkbox" class="fk"> ${esc(k)}</label>`).join('')}
+  <div class="row" style="margin-top:10px"><button class="btn" id="feyask">Claude kontrol etsin</button><button class="btn alt" id="feysave">Kaydet</button></div></div>`}
+function bindDersSonu(pk){
+  const b=$('#dbitir');if(b)b.onclick=()=>{S.done[pk.pid]=today();save();toast('Harika. Kartlar destene eklendi, yarın ilk dinletme var.');VIEWS.okuma(pk.pid)};
+  bindFark();
+  const fs=$('#feysave'),fa=$('#feyask');
+  const store=()=>{const t=$('#fey').value.trim();if(!t)return false;(S.feyn[pk.pid]=S.feyn[pk.pid]||[]).push({t:Date.now(),text:t});
+    const due=dinletDue().find(x=>x.pid===pk.pid);if(due){(S.dinlet[pk.pid]=S.dinlet[pk.pid]||[]).push(due.o)}save();return true};
+  if(fs)fs.onclick=()=>{toast(store()?'Kaydedildi':'Önce bir şeyler yaz')};
+  if(fa)fa.onclick=async()=>{const t=$('#fey').value.trim();if(!t){toast('Önce anlatımını yaz');return}store();
+    const p=`SMMM Staja Giriş Sınavına hazırlanıyorum. Feynman tekniğiyle bir konuyu kendi cümlelerimle anlattım. Sen hocam gibi davran: önce doğru olanları kısaca söyle, sonra yanlış ya da eksik olanları tek tek göster ve düzelt, en sonunda aklımda kalması için 2-3 cümlelik toparlama yap. Sade anlat, otel işletmesinden örnek ver.\n\nKonu: ${pk.title}\nGörev: ${pk.tools.feynman.gorev}\n\nBenim anlatımım:\n${t}`;
+    if(window.SGSAndroid){SGSAndroid.copy(p);SGSAndroid.open('https://claude.ai/new?q='+encodeURIComponent(p.slice(0,6000)))}else{try{await navigator.clipboard.writeText(p)}catch(e){}window.open('https://claude.ai/new?q='+encodeURIComponent(p.slice(0,6000)),'_blank')}};
+}
+
+/* ---- Kart oturumu ---- */
+VIEWS.kartlar=async(f={})=>{
+  shell('Kartlar',`<div class="card"><span class="spin"></span></div>`,{tab:'hafiza'});
+  let cs;if(f.pid){cs=cardsOf(await loadPack(f.pid))}else cs=(await allCards()).filter(cardDue);
+  if(!f.hepsi&&!f.pid)cs=shuffle(cs);
+  if(!cs.length){shell('Kartlar','<div class="card">Bugün tekrar edilecek kart yok. 🎉 Yeni ders bitirdikçe kartlar buraya gelir.</div>',{tab:'hafiza'});return}
+  let i=0,acik=false,stat={b:0,z:0,y:0};const q=[...cs];
+  const draw=()=>{if(i>=q.length){shell('Kartlar bitti',`<div class="card"><div class="stat"><div><b>${stat.b}</b><span class="mut">bildim</span></div><div><b>${stat.z}</b><span class="mut">zorlandım</span></div><div><b>${stat.y}</b><span class="mut">bilemedim</span></div></div></div><p class="mut">Bilemediklerin yarın yine gelecek, bildiklerin giderek seyrekleşecek.</p><button class="btn" data-tab="hafiza">Hafıza'ya dön</button>`,{tab:'hafiza'});return}
+    const c=q[i];shell(`Kart ${i+1}/${q.length}`,`<div class="pill">${esc(SUBJ_AD[c.sub]||'')} · ${esc(c.src)}</div>
+    <div class="card" style="margin-top:8px;min-height:180px;display:flex;flex-direction:column;justify-content:center;text-align:center"><div style="font-size:19px;font-weight:600">${esc(c.s)}</div>${acik?`<hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><div style="font-size:17px">${esc(c.c)}</div>`:''}</div>
+    ${acik?`<div class="opts" style="grid-template-columns:repeat(3,1fr)"><button data-r="y" style="font-size:15px">Bilemedim</button><button data-r="z" style="font-size:15px">Zorlandım</button><button data-r="b" style="font-size:15px">Bildim</button></div>`:`<button class="btn" id="goster" style="width:100%">Cevabı göster</button><p class="mut" style="text-align:center">Önce kafanda ya da sesli cevapla, sonra bak.</p>`}`,{tab:'hafiza'});
+    if(!acik){$('#goster').onclick=()=>{acik=true;draw()};return}
+    app.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{const r=b.dataset.r;const st=S.cards[c.id]||(S.cards[c.id]={box:0,due:0,n:0});st.n++;
+      if(r==='b'){stat.b++;st.box=Math.min(st.box+1,CARD_DAYS.length-1);st.due=today()+CARD_DAYS[st.box]*DAY}
+      else if(r==='z'){stat.z++;st.due=today()+DAY}
+      else{stat.y++;st.box=0;st.due=today()+DAY;q.push(c)}
+      save();i++;acik=false;draw()});
+  };draw();
+};
+
+/* ---- Hafıza sarayı turu ---- */
+VIEWS.saray=async(pid)=>{
+  const pk=await loadPack(pid);const sr=pk.tools.saray;const D=sr.duraklar;let i=-1,mode='tur',goster=false,puan=0;
+  const draw=()=>{
+    if(mode==='tur'){
+      if(i<0){shell(sr.ad,`<div class="card"><p style="margin-top:0">${esc(sr.giris)}</p><button class="btn" id="n">Tura başla</button></div>`,{tab:'hafiza'});$('#n').onclick=()=>{i=0;draw()};return}
+      if(i>=D.length){shell(sr.ad,`<div class="card"><h3 style="margin-top:0">Tur bitti</h3><p>Şimdi yoklama: sana sadece yeri söyleyeceğim, orada ne olduğunu sen hatırlayacaksın.</p><button class="btn" id="n">Yoklamaya geç</button> <button class="btn alt" id="r">Turu tekrarla</button></div>`,{tab:'hafiza'});$('#n').onclick=()=>{mode='yokla';i=0;puan=0;goster=false;draw()};$('#r').onclick=()=>{i=0;draw()};return}
+      const d=D[i];shell(`${sr.ad} · ${i+1}/${D.length}`,`<div class="card"><div class="mut">Durak ${i+1}</div><h2 style="margin:4px 0 10px">📍 ${esc(d.yer)}</h2><p style="font-size:17px">🎬 ${esc(d.imge)}</p>${goster?`<div class="lesson"><div class="kutu"><b class="bas">Bilgi</b>${esc(d.bilgi)}</div></div>`:''}</div>
+      ${goster?`<button class="btn" id="n" style="width:100%">Sonraki durak ›</button>`:`<p class="mut">Sahneyi gözünün önüne getir. Hazır olunca bilgiyi aç.</p><button class="btn" id="b" style="width:100%">Bilgiyi göster</button>`}`,{tab:'hafiza'});
+      if(goster)$('#n').onclick=()=>{i++;goster=false;draw()};else $('#b').onclick=()=>{goster=true;draw()};return}
+    if(i>=D.length){S.saray[pid]=puan;save();shell('Yoklama sonucu',`<div class="card"><div class="stat"><div><b>${puan}/${D.length}</b><span class="mut">hatırlanan</span></div></div></div><p class="mut">Yarın bir daha yokla. Hafızlar da ezberi ertesi gün, bir hafta, iki hafta ve bir ay sonra yeniden dinletir.</p><button class="btn" data-tab="hafiza">Hafıza'ya dön</button>`,{tab:'hafiza'});return}
+    const d=D[i];shell(`Yoklama ${i+1}/${D.length}`,`<div class="card"><h2 style="margin:0 0 8px">📍 ${esc(d.yer)}</h2><p class="mut">Burada hangi sahne vardı, hangi bilgiyi taşıyordu?</p>${goster?`<p>🎬 ${esc(d.imge)}</p><div class="lesson"><div class="kutu">${esc(d.bilgi)}</div></div>`:''}</div>
+    ${goster?`<div class="opts" style="grid-template-columns:1fr 1fr"><button data-k="0" style="font-size:15px">Hatırlamadım</button><button data-k="1" style="font-size:15px">Hatırladım</button></div>`:`<button class="btn" id="b" style="width:100%">Cevabı göster</button>`}`,{tab:'hafiza'});
+    if(goster)app.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{puan+=+b.dataset.k;i++;goster=false;draw()});else $('#b').onclick=()=>{goster=true;draw()};
+  };draw();
+};
+
+/* ---- Hafıza sekmesi ---- */
+VIEWS.hafiza=async()=>{
+  shell('Hafıza',`<div class="card"><span class="spin"></span></div>`,{back:false,tab:'hafiza'});
+  const cards=await allCards();const dueC=cards.filter(cardDue).length;const din=dinletDue();
+  const dueQ=Object.values(S.ans).filter(isDue).length;
+  const tp=await toolPacks();let kod=0,fark=0,saray=[];for(const p of tp){const pk=await loadPack(p.pid);const t=pk.tools||{};kod+=(t.kodlar||[]).length;fark+=(t.farklar||[]).length;if(t.saray)saray.push(pk)}
+  const m=await getManifest();const guide=Object.entries(m.packs).find(([k,v])=>v.kind==='guide');
+  shell('Hafıza',`
+  <div class="card"><div class="stat"><div><b>${dueC}</b><span class="mut">kart</span></div><div><b>${din.length}</b><span class="mut">dinletme</span></div><div><b>${dueQ}</b><span class="mut">yanlış soru</span></div></div></div>
+  ${dueC?`<button class="subj" style="margin-bottom:8px" data-go='["kartlar",{}]'><h3>🃏 Bugünün kartları (${dueC})</h3><div class="mut">Bilemediklerin sık, bildiklerin seyrek gelir.</div></button>`:''}
+  ${din.map(x=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${x.pid}"]'><h3>🗣️ Dinletme: ${esc(m.packs[x.pid].title)}</h3><div class="mut">${x.o}. gün tekrarı · dersi aç, sonundaki "Anlat" kutusunda kendi cümlelerinle anlat</div></button>`).join('')}
+  ${dueQ?`<button class="subj" style="margin-bottom:8px" data-go='["oturum",{"mode":"due"}]'><h3>🔁 Yanlış yaptığın sorular (${dueQ})</h3><div class="mut">1, 3, 7, 16 ve 35 gün arayla geri gelir.</div></button>`:''}
+  ${!dueC&&!din.length&&!dueQ?'<div class="card">Bugün tekrar bekleyen bir şey yok. Yeni bir ders bitirdiğinde kartları ve dinletmeleri burada göreceksin.</div>':''}
+  <h3 class="sec">Atölye</h3><div class="grid">
+   <button class="subj" data-go='["kodlar"]'><h3>🔑 Kodlar</h3><div class="mut">${kod} kod</div></button>
+   <button class="subj" data-go='["farklar"]'><h3>⚖️ Fark tabloları</h3><div class="mut">${fark} tablo</div></button>
+   <button class="subj" data-go='["saraylar"]'><h3>🏨 Saraylar</h3><div class="mut">${saray.length} saray</div></button>
+   <button class="subj" data-go='["kartlar",{"hepsi":true,"tum":true}]'><h3>🃏 Bütün kartlar</h3><div class="mut">${cards.length} kart (bitirdiğin derslerden)</div></button>
+   ${guide?`<button class="subj" data-go='["okuma","${guide[0]}"]'><h3>📖 Nasıl çalışıyoruz?</h3><div class="mut">Hafız yöntemi ve 5 teknik</div></button>`:''}
+  </div>`,{back:false,tab:'hafiza'});
+};
+async function toolList(key){const out=[];for(const p of await toolPacks()){const pk=await loadPack(p.pid);for(const x of (pk.tools&&pk.tools[key])||[])out.push(Object.assign({sub:x.sub||pk.subject,src:pk.title},x))}return out}
+VIEWS.kodlar=async()=>{const ks=await toolList('kodlar');const by={};ks.forEach(k=>(by[k.sub]=by[k.sub]||[]).push(k));
+  shell('Kodlar',Object.entries(by).map(([s,l])=>`<h3 class="sec">${esc(SUBJ_AD[s]||s)}</h3>${l.map(kodHtml).join('')}`).join('')||'<div class="card">Henüz kod yok.</div>',{tab:'hafiza'})};
+VIEWS.farklar=async()=>{const fs=await toolList('farklar');const by={};fs.forEach(k=>(by[k.sub]=by[k.sub]||[]).push(k));
+  shell('Fark tabloları',Object.entries(by).map(([s,l])=>`<h3 class="sec">${esc(SUBJ_AD[s]||s)}</h3>${l.map(farkHtml).join('')}`).join('')||'<div class="card">Henüz tablo yok.</div>',{tab:'hafiza'});bindFark()};
+VIEWS.saraylar=async()=>{const out=[];for(const p of await toolPacks()){const pk=await loadPack(p.pid);if(pk.tools&&pk.tools.saray)out.push(pk)}
+  shell('Hafıza sarayları',out.map(pk=>`<button class="subj" style="margin-bottom:8px" data-go='["saray","${pk.pid}"]'><h3>🏨 ${esc(pk.tools.saray.ad)}</h3><div class="mut">${esc(SUBJ_AD[pk.subject]||'')} · ${pk.tools.saray.duraklar.length} durak${S.saray[pk.pid]!=null?' · son yoklama '+S.saray[pk.pid]+'/'+pk.tools.saray.duraklar.length:''}</div></button>`).join('')||'<div class="card">Henüz saray yok.</div>',{tab:'hafiza'})};
 
 /* ---- Tekrar ---- */
 VIEWS.tekrar=()=>{
