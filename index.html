@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14213d">
+<meta name="robots" content="noindex,nofollow">
+<title>SGS Çalışma</title>
+<link rel="manifest" href="app.webmanifest">
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d2433;--mut:#6b7280;--line:#e5e1d8;--nav:#14213d;--acc:#b08d3c;--ok:#17803d;--bad:#b42318;--soft:#efe9dc;--r:14px}
+@media (prefers-color-scheme:dark){:root{--bg:#121417;--card:#1b1f24;--ink:#e8e6e1;--mut:#9aa1ab;--line:#2b3036;--soft:#23282e}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+header.top{position:sticky;top:0;z-index:20;background:var(--nav);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 16px 10px;display:flex;align-items:center;gap:10px}
+header.top h1{font-size:17px;margin:0;flex:1;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header.top .back{background:none;border:0;color:#fff;font-size:22px;padding:0 6px}
+main{max-width:980px;margin:0 auto;padding:16px 16px 96px}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:20;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs button{flex:1;border:0;background:none;padding:9px 0 8px;font-size:12px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px}
+nav.tabs button b{font-size:20px;font-weight:400}
+nav.tabs button.on{color:var(--nav)}
+@media (prefers-color-scheme:dark){nav.tabs button.on{color:var(--acc)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.subj{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.subj h3{margin:0 0 4px;font-size:16px}
+.mut{color:var(--mut);font-size:14px}
+.bar{height:7px;background:var(--soft);border-radius:9px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--acc)}
+.btn{border:0;border-radius:12px;padding:12px 16px;background:var(--nav);color:#fff;font-weight:600}
+.btn.alt{background:var(--soft);color:var(--ink)}
+.btn.small{padding:7px 11px;font-size:14px;border-radius:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+h2{font-size:20px;margin:6px 0 12px}
+h3.sec{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:20px 0 8px}
+.lock{min-height:100vh;display:grid;place-items:center;padding:24px}
+.lock .card{max-width:380px;width:100%;text-align:center;padding:28px}
+input[type=password],input[type=text],textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.qwrap{position:relative;background:#fff;border-radius:12px;border:1px solid var(--line);overflow:hidden;touch-action:pan-y}
+.qwrap img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+@media (prefers-color-scheme:dark){.qwrap img{filter:invert(.9) hue-rotate(180deg)}}
+.qwrap canvas{position:absolute;inset:0;width:100%;height:100%}
+.qwrap.draw{touch-action:none}
+.opts{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+.opts button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:14px 0;font-size:20px;font-weight:700}
+.opts button.sel{border-color:var(--nav)}
+.opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opts button.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.tools button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 10px;font-size:14px}
+.tools button.on{background:var(--nav);color:#fff;border-color:var(--nav)}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);padding:0!important}
+.verdict{font-weight:700;margin:6px 0}
+.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;background:var(--soft);font-size:12px;color:var(--mut)}
+.qnav{display:flex;gap:4px;flex-wrap:wrap;margin:8px 0}
+.qnav button{width:34px;height:30px;border:1px solid var(--line);background:var(--card);border-radius:7px;font-size:12px}
+.qnav button.a{background:var(--soft)}.qnav button.cur{border-color:var(--nav);border-width:2px}
+.qnav button.ok{background:var(--ok);color:#fff}.qnav button.bad{background:var(--bad);color:#fff}
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet .card{width:100%;max-width:640px;border-radius:18px 18px 0 0;margin:0;padding:20px 18px calc(20px + env(safe-area-inset-bottom))}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.stat b{display:block;font-size:24px}
+.page img{width:100%;display:block}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;z-index:60;font-size:14px}
+table.res{width:100%;border-collapse:collapse;font-size:14px}table.res td,table.res th{padding:7px;border-bottom:1px solid var(--line);text-align:left}
+.spin{display:inline-block;width:18px;height:18px;border:3px solid var(--soft);border-top-color:var(--acc);border-radius:50%;animation:s 1s linear infinite;vertical-align:middle}
+@keyframes s{to{transform:rotate(360deg)}}
+.lesson{line-height:1.65}.lesson h2{font-size:21px;margin:4px 0 10px}.lesson h3{font-size:17px;margin:22px 0 8px;color:var(--nav)}
+@media (prefers-color-scheme:dark){.lesson h3{color:var(--acc)}}
+.lesson .kutu{border-radius:12px;padding:12px 14px;margin:12px 0;border-left:5px solid var(--acc);background:var(--soft)}
+.lesson .kutu b.bas{display:block;margin-bottom:4px}
+.lesson .meslek{border-left-color:#2f6f4f}.lesson .dikkat{border-left-color:var(--bad)}.lesson .ornek{border-left-color:#1d4ed8}
+.lesson table{border-collapse:collapse;width:100%;margin:10px 0;font-size:15px}.lesson td,.lesson th{border:1px solid var(--line);padding:6px 8px;text-align:left}
+.lesson th{background:var(--soft)}.lesson td.n{text-align:right;font-variant-numeric:tabular-nums}
+.lesson .yev td:first-child{width:58%}.lesson details{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0}
+.lesson summary{font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+'use strict';
+/* ====== Sabitler ====== */
+const SUBJ = [
+  {id:'fm',  ad:'Finansal Muhasebe', grup:'Alan'},
+  {id:'std', ad:'Muhasebe Standartları (TMS/TFRS)', grup:'Alan'},
+  {id:'mlt', ad:'Maliyet Muhasebesi', grup:'Alan'},
+  {id:'anz', ad:'Finansal Tablolar Analizi', grup:'Alan'},
+  {id:'dnt', ad:'Denetim', grup:'Alan'},
+  {id:'eko', ad:'Ekonomi', grup:'Alan'},
+  {id:'mly', ad:'Maliye', grup:'Alan'},
+  {id:'vrg', ad:'Vergi Hukuku', grup:'Hukuk'},
+  {id:'tic', ad:'Ticaret Hukuku', grup:'Hukuk'},
+  {id:'brc', ad:'Borçlar Hukuku', grup:'Hukuk'},
+  {id:'is',  ad:'İş ve SGK Hukuku', grup:'Hukuk'},
+  {id:'mes', ad:'Meslek Hukuku', grup:'Hukuk'},
+  {id:'hk',  ad:'Hukuk Grubu (karma)', grup:'Hukuk'},
+  {id:'gk',  ad:'Genel Kültür ve Yetenek', grup:'Genel'},
+  {id:'ing', ad:'İngilizce', grup:'Genel'},
+];
+const SUBJ_AD = Object.fromEntries(SUBJ.map(s=>[s.id,s.ad]));
+const BOX_DAYS = [1,3,7,16,35];
+const DAY = 864e5;
+const $ = (s,el=document)=>el.querySelector(s);
+const esc = s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today = ()=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()};
+
+/* ====== Depolama ====== */
+const idb = (()=>{let p;function db(){return p||(p=new Promise((res,rej)=>{const r=indexedDB.open('sgs',2);r.onupgradeneeded=()=>{const d=r.result;for(const s of['kv','ink'])if(!d.objectStoreNames.contains(s))d.createObjectStore(s)};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}))}
+  async function op(store,mode,fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction(store,mode);const r=fn(t.objectStore(store));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})}
+  return{get:(s,k)=>op(s,'readonly',o=>o.get(k)),set:(s,k,v)=>op(s,'readwrite',o=>o.put(v,k)),del:(s,k)=>op(s,'readwrite',o=>o.delete(k)),keys:s=>op(s,'readonly',o=>o.getAllKeys())}})();
+
+let S = {ans:{}, marks:{}, denemeler:{}, daily:{}, set:{pen:'any',per:20}};
+function loadState(){try{const x=JSON.parse(localStorage.getItem('sgs_state')||'null');if(x)S=Object.assign(S,x)}catch(e){}}
+let saveT; function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem('sgs_state',JSON.stringify(S))}catch(e){toast('Kayıt alanı doldu, yedek alın')}},150)}
+
+/* ====== Şifre çözme ====== */
+const te=new TextEncoder(), td=new TextDecoder();
+const ub64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+let KEY=null, MAN=null;
+async function getManifest(){if(MAN)return MAN;const r=await fetch('manifest.json',{cache:'no-cache'}).catch(()=>null);if(r&&r.ok){MAN=await r.json();localStorage.setItem('sgs_man',JSON.stringify(MAN))}else{MAN=JSON.parse(localStorage.getItem('sgs_man')||'null')}return MAN}
+async function unlock(pw){
+  const m=await getManifest(); if(!m) throw new Error('Bağlantı yok');
+  const base=await crypto.subtle.importKey('raw',te.encode(pw.normalize('NFC').trim()),'PBKDF2',false,['deriveKey']);
+  const kek=await crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:ub64(m.kdf.salt),iterations:m.kdf.iter},base,{name:'AES-GCM',length:256},false,['decrypt']);
+  const raw=await crypto.subtle.decrypt({name:'AES-GCM',iv:ub64(m.key.iv),additionalData:te.encode('sgs-key')},kek,ub64(m.key.data));
+  const k=await crypto.subtle.importKey('raw',raw,'AES-GCM',false,['decrypt']);
+  await idb.set('kv','key',k); KEY=k; return k;
+}
+const PACKS={};
+async function loadPack(pid){
+  if(PACKS[pid])return PACKS[pid];
+  const m=await getManifest(); const info=m.packs[pid]; if(!info) throw new Error('Paket yok: '+pid);
+  const url='p/'+info.file; let buf;
+  const cache=('caches' in self)?await caches.open('sgs-packs'):null;
+  let r=cache&&await cache.match(url);
+  if(!r){r=await fetch(url);if(!r.ok)throw new Error('İndirilemedi');if(cache)await cache.put(url,r.clone())}
+  buf=new Uint8Array(await r.arrayBuffer());
+  const plain=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:buf.slice(0,12),additionalData:te.encode(pid)},KEY,buf.slice(12)));
+  const hl=new DataView(plain.buffer).getUint32(0); const head=JSON.parse(td.decode(plain.subarray(4,4+hl)));
+  const body=plain.subarray(4+hl); const urls={};
+  head.url=f=>{if(urls[f])return urls[f];const [o,l]=head.index[f];return urls[f]=URL.createObjectURL(new Blob([body.subarray(o,o+l)],{type:f.endsWith('.webp')?'image/webp':'application/octet-stream'}))};
+  head.raw=f=>{const [o,l]=head.index[f];return body.subarray(o,o+l)};
+  head.pid=pid; PACKS[pid]=head; return head;
+}
+async function packsOf(kind,subject){const m=await getManifest();return Object.entries(m.packs).filter(([k,v])=>(!kind||v.kind===kind)&&(!subject||v.subject===subject)).map(([k,v])=>Object.assign({pid:k},v))}
+
+/* ====== Soru durumu (aralıklı tekrar) ====== */
+function record(q,choice){
+  const a=S.ans[q.id]||(S.ans[q.id]={n:0,ok:0,box:0,due:0,sub:q.sub});
+  const ok=choice===q.ans; a.n++; if(ok)a.ok++; a.last=choice; a.lastOk=ok; a.t=Date.now(); a.sub=q.sub;
+  if(ok){a.box=Math.min(a.box+1,BOX_DAYS.length); a.due=a.box>=BOX_DAYS.length?0:today()+BOX_DAYS[a.box-1]*DAY; if(a.box>=2&&a.wrong)a.wrong=a.box<BOX_DAYS.length}
+  else{a.box=0;a.wrong=true;a.due=today()+DAY}
+  const d=S.daily[today()]||(S.daily[today()]={n:0,ok:0}); d.n++; if(ok)d.ok++;
+  save(); return ok;
+}
+const isDue=a=>a&&a.wrong&&a.due&&a.due<=today()+DAY-1;
+
+/* ====== Arayüz yardımcıları ====== */
+const app=$('#app'); let ROUTE=[];
+function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
+function shell(title,html,{back=true,tab}={}){
+  app.innerHTML=`<header class="top">${back?'<button class="back" data-back>‹</button>':''}<h1>${esc(title)}</h1></header><main>${html}</main>
+  <nav class="tabs">${[['bugun','☀','Bugün'],['dersler','📚','Dersler'],['deneme','📝','Deneme'],['tekrar','🔁','Tekrar'],['ayar','⚙','Ayarlar']].map(([k,i,t])=>`<button data-tab="${k}" class="${tab===k?'on':''}"><b>${i}</b>${t}</button>`).join('')}</nav>`;
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-tab],[data-back],[data-go]'); if(!t)return;
+  if(t.dataset.tab){ROUTE=[];go(t.dataset.tab)}
+  else if(t.dataset.back){history.back()}
+  else if(t.dataset.go){go(...JSON.parse(t.dataset.go))}
+});
+function go(name,...args){ROUTE.push([name,...args]);try{history.pushState({d:ROUTE.length},'')}catch(e){}(VIEWS[name]||VIEWS.bugun)(...args)}
+window.addEventListener('popstate',()=>{if(!KEY)return;if(document.querySelector('.sheet')){document.querySelector('.sheet').remove();return}ROUTE.pop();const r=ROUTE.pop();if(r){ROUTE.push(r);(VIEWS[r[0]]||VIEWS.bugun)(...r.slice(1))}else{ROUTE=[['bugun']];VIEWS.bugun()}});
+const pct=(a,b)=>b?Math.round(100*a/b):0;
+
+function subjStats(sub){let n=0,ok=0,seen=0,due=0;for(const a of Object.values(S.ans)){if(a.sub!==sub)continue;seen++;n+=a.n;ok+=a.ok;if(isDue(a))due++}return{n,ok,seen,due}}
+
+/* ====== Görünümler ====== */
+const VIEWS={};
+VIEWS.bugun=async()=>{
+  const m=await getManifest();
+  const dueAll=Object.values(S.ans).filter(isDue).length;
+  const td_=S.daily[today()]||{n:0,ok:0};
+  // önerilen ders: en az çalışılan alan dersi (soru bankası olanlar)
+  const qp=await packsOf('questions'); const subs=[...new Set(qp.map(p=>p.subject))].filter(s=>s!=='deneme');
+  subs.sort((a,b)=>subjStats(a).seen-subjStats(b).seen);
+  const oneri=subs.slice(0,2);
+  const hafta=Object.entries(S.daily).filter(([k])=>+k>today()-7*DAY).reduce((s,[k,v])=>s+v.n,0);
+  shell('Bugün',`
+   <div class="card"><div class="stat"><div><b>${td_.n}</b><span class="mut">bugün çözülen</span></div><div><b>${pct(td_.ok,td_.n)}%</b><span class="mut">bugünkü başarı</span></div><div><b>${hafta}</b><span class="mut">son 7 gün</span></div></div></div>
+   ${dueAll?`<div class="card"><h3 style="margin:0 0 6px">🔁 Tekrar zamanı gelen ${dueAll} soru</h3><p class="mut" style="margin:0 0 10px">Daha önce yanlış yaptığın sorular. Önce bunlar, çünkü unutmadan pekişsinler.</p><button class="btn" data-go='["oturum",{"mode":"due"}]'>Tekrara başla</button></div>`:''}
+   <h3 class="sec">Bugünün önerisi</h3>
+   ${oneri.map(s=>{const st=subjStats(s);return`<div class="card"><h3 style="margin:0">${esc(SUBJ_AD[s])}</h3><p class="mut" style="margin:4px 0 10px">${st.seen?`${st.seen} farklı soru gördün, başarı %${pct(st.ok,st.n)}`:'Henüz başlamadın. 20 soruluk bir setle tanışalım.'}</p><div class="row"><button class="btn" data-go='["oturum",{"mode":"yeni","sub":"${s}"}]'>${S.set.per} yeni soru</button><button class="btn alt" data-go='["ders","${s}"]'>Derse git</button></div></div>`}).join('')}
+   <p class="mut">Sayaç yok, acele yok. Her soruda kalemle karalayabilir, takıldığın yerde <b>Sor</b> düğmesiyle bana sorabilirsin.</p>`,{back:false,tab:'bugun'});
+};
+VIEWS.dersler=async()=>{
+  const qp=await packsOf('questions'), dp=await packsOf('doc');
+  const has=s=>qp.filter(p=>p.subject===s).reduce((a,p)=>a+p.count,0);
+  let h='';
+  for(const g of['Alan','Hukuk','Genel']){
+    h+=`<h3 class="sec">${g==='Alan'?'Alan bilgisi (100 soru)':g==='Hukuk'?'Hukuk dersleri (alan bilgisinin parçası)':'Genel kültür ve yabancı dil (30 soru)'}</h3><div class="grid">`;
+    for(const s of SUBJ.filter(x=>x.grup===g)){const n=has(s.id),st=subjStats(s.id),docs=dp.filter(p=>p.subject===s.id).length;
+      h+=`<button class="subj" data-go='["ders","${s.id}"]'><h3>${esc(s.ad)}</h3><div class="mut">${n?n+' soru':'Soru bankası hazırlanıyor'}${docs?' · '+docs+' okuma':''}</div><div class="bar"><i style="width:${n?pct(st.seen,n):0}%"></i></div></button>`}
+    h+='</div>';
+  }
+  shell('Dersler',h,{back:false,tab:'dersler'});
+};
+VIEWS.ders=async(sub)=>{
+  const qp=(await packsOf('questions',sub)), dp=await packsOf('doc',sub), lp=await packsOf('lesson',sub);
+  const st=subjStats(sub); const n=qp.reduce((a,p)=>a+p.count,0);
+  shell(SUBJ_AD[sub],`
+   <div class="card"><div class="stat"><div><b>${st.seen}/${n}</b><span class="mut">görülen soru</span></div><div><b>${pct(st.ok,st.n)}%</b><span class="mut">başarı</span></div><div><b>${st.due}</b><span class="mut">tekrar bekleyen</span></div></div></div>
+   ${lp.length?`<h3 class="sec">Sade anlatım</h3>${lp.map(p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">Benim hazırladığım, örnekli anlatım</div></button>`).join('')}`:''}
+   ${dp.length?`<h3 class="sec">Kaynak ders notları</h3>${dp.map(p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} sayfa${S.marks['read_'+p.pid]?' · kaldığın yer: '+(S.marks['read_'+p.pid]+1)+'. sayfa':''}</div></button>`).join('')}`:''}
+   ${n?`<h3 class="sec">Soru çöz</h3><div class="row" style="margin-bottom:10px"><button class="btn" data-go='["oturum",{"mode":"yeni","sub":"${sub}"}]'>${S.set.per} yeni soru</button><button class="btn alt" data-go='["oturum",{"mode":"karisik","sub":"${sub}"}]'>Karışık</button>${st.due?`<button class="btn alt" data-go='["oturum",{"mode":"due","sub":"${sub}"}]'>Yanlışlarım (${st.due})</button>`:''}</div>
+   ${qp.map(p=>{let seen=0;for(const k in S.ans)if(k.startsWith(p.pid.slice(2)+'-'))seen++;return`<button class="subj" style="margin-bottom:8px" data-go='["oturum",{"mode":"kaynak","pid":"${p.pid}"}]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} soru · ${seen} çözüldü</div><div class="bar"><i style="width:${pct(seen,p.count)}%"></i></div></button>`}).join('')}`:'<div class="card mut">Bu dersin soru bankası hazırlanıyor.</div>'}`,{tab:'dersler'});
+};
+
+/* ---- Soru oturumu ---- */
+let SES=null;
+async function gatherQuestions(filter){
+  const qp=await packsOf('questions'); const out=[];
+  for(const p of qp){if(filter.pid&&p.pid!==filter.pid)continue;if(filter.sub&&p.subject!==filter.sub&&!(filter.mode==='due'))continue;if(p.subject==='deneme'&&!filter.pid&&filter.mode!=='due')continue;
+    const pk=await loadPack(p.pid); for(const q of pk.questions)out.push(Object.assign({pid:p.pid},q))}
+  return out;
+}
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+VIEWS.oturum=async(f)=>{
+  shell('Hazırlanıyor',`<div class="card"><span class="spin"></span> Sorular açılıyor…</div>`);
+  let qs=await gatherQuestions(f);
+  if(f.mode==='due'){qs=qs.filter(q=>isDue(S.ans[q.id])&&(!f.sub||q.sub===f.sub))}
+  else if(f.mode==='yeni'){qs=qs.filter(q=>!S.ans[q.id]);qs=qs.slice(0,S.set.per)}
+  else if(f.mode==='karisik'){qs=shuffle(qs).slice(0,S.set.per)}
+  else if(f.mode==='kaynak'){const done=qs.filter(q=>S.ans[q.id]);const rest=qs.filter(q=>!S.ans[q.id]);qs=rest.length?rest:done}
+  if(!qs.length){shell('Soru kalmadı','<div class="card">Bu seçimde çözülecek soru yok. 🎉</div>');return}
+  SES={qs,i:0,f,picked:{},title:f.mode==='due'?'Tekrar':(f.pid?(await getManifest()).packs[f.pid].title:SUBJ_AD[f.sub]||'Sorular')};
+  showQ();
+};
+async function showQ(){
+  const s=SES,q=s.qs[s.i]; const pk=await loadPack(q.pid);
+  const answered=s.picked[q.id];
+  shell(`${s.title} · ${s.i+1}/${s.qs.length}`,`
+   <div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="pill">${esc(SUBJ_AD[q.sub]||'Deneme')} · ${esc(pk.title)} · s.${q.page}</span>${S.marks[q.id]?'<span class="pill">⭐ işaretli</span>':''}</div>
+   <div class="qwrap" id="qw"><img id="qimg" src="${pk.url(q.img)}" alt="Soru ${q.n}"><canvas id="ink"></canvas></div>
+   ${inkTools()}
+   ${q.complete===false?'<p class="mut" style="font-size:13px">Not: Bu soru kaynakta iki sütuna ya da sayfaya bölünmüş olabilir; şıklardan biri eksik görünürse kaynaktaki sayfaya bakabilirsin.</p>':''}
+   <div class="opts">${'ABCDE'.split('').map(c=>`<button data-opt="${c}" class="${answered?(c===q.ans?'ok':(c===answered?'bad':'')):''}">${c}</button>`).join('')}</div>
+   <div id="after">${answered?afterHtml(q,answered):''}</div>
+   <div class="row" style="justify-content:space-between;margin-top:10px">
+     <button class="btn alt small" id="prev" ${s.i?'':'disabled'}>‹ Önceki</button>
+     <button class="btn alt small" id="mark">${S.marks[q.id]?'⭐ İşareti kaldır':'☆ İşaretle'}</button>
+     <button class="btn small" id="next">${s.i+1<s.qs.length?'Sonraki ›':'Bitir'}</button>
+   </div>`,{tab:'dersler'});
+  initInk(q.id);
+  app.querySelectorAll('[data-opt]').forEach(b=>b.onclick=()=>{
+    if(s.picked[q.id])return; const c=b.dataset.opt; s.picked[q.id]=c; const ok=record(q,c);
+    app.querySelectorAll('[data-opt]').forEach(x=>{if(x.dataset.opt===q.ans)x.classList.add('ok');else if(x.dataset.opt===c)x.classList.add('bad')});
+    $('#after').innerHTML=afterHtml(q,c); bindAfter(q,c);
+  });
+  if(answered)bindAfter(q,answered);
+  $('#prev').onclick=()=>{s.i--;showQ()};
+  $('#next').onclick=()=>{if(s.i+1<s.qs.length){s.i++;showQ()}else finishSession()};
+  $('#mark').onclick=()=>{S.marks[q.id]=!S.marks[q.id];save();showQ()};
+}
+function afterHtml(q,c){const ok=c===q.ans;return`<div class="verdict ${ok?'ok':'bad'}">${ok?'Doğru!':'Doğru cevap: '+q.ans}</div><div class="row"><button class="btn small" id="ask">💬 Sor</button><span class="mut" style="font-size:13px">${ok?'Emin değilsen yine sor; tahminle bilmek de öğrenmenin parçası.':'Neden '+q.ans+' olduğunu sorup konuyu oturtalım.'}</span></div>`}
+function bindAfter(q,c){const b=$('#ask');if(b)b.onclick=()=>askSheet(q,c)}
+function finishSession(){
+  const s=SES;let n=0,ok=0;for(const q of s.qs){const c=s.picked[q.id];if(c){n++;if(c===q.ans)ok++}}
+  shell('Set bitti',`<div class="card"><div class="stat"><div><b>${n}</b><span class="mut">cevaplanan</span></div><div><b>${ok}</b><span class="mut">doğru</span></div><div><b>${pct(ok,n)}%</b><span class="mut">başarı</span></div></div></div>
+  <p class="mut">Yanlışların ${BOX_DAYS[0]} gün sonra Tekrar sekmesinde karşına çıkacak. Doğru bildiklerin de aralıkları açılarak arada bir yoklanır.</p>
+  <div class="row"><button class="btn" data-go='${JSON.stringify(["oturum",s.f])}'>Bir set daha</button><button class="btn alt" data-tab="bugun">Bugün</button></div>`);
+}
+
+/* ---- Sor (Claude) ---- */
+function askSheet(q,c){
+  const d=document.createElement('div');d.className='sheet';
+  d.innerHTML=`<div class="card"><h3 style="margin:0 0 8px">Bana sor</h3><p class="mut" style="margin:0 0 8px">Sorunun metni, doğru cevap ve senin cevabın otomatik eklenecek. Sen sadece neyi anlamadığını yaz.</p>
+  <textarea id="askt" rows="3" placeholder="Örn: B şıkkı neden yanlış? Bu kaydı hiç anlamadım, baştan anlatır mısın?"></textarea>
+  <div class="row" style="margin-top:10px"><button class="btn" id="go">Claude'da aç</button><button class="btn alt" id="cp">Sadece kopyala</button><button class="btn alt" id="x">Kapat</button></div></div>`;
+  document.body.appendChild(d);
+  const prompt=()=>`SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, muhasebede sıfırdan başladım. Bana arkadaşımla çalışıyormuşum gibi, sade ve örnekli anlat; mümkünse otel işletmesinden örnek ver.\n\nDers: ${SUBJ_AD[q.sub]||'Deneme'}\nKaynak: ${PACKS[q.pid]?.title||''}, sayfa ${q.page}\n\nSoru (kaynak metni, tablo/kayıtlar bozuk görünebilir):\n${q.text}\n\nCevap anahtarı: ${q.ans}\nBenim cevabım: ${c}\n\nSorum: ${$('#askt').value.trim()||'Doğru cevabın neden doğru, diğer şıkların neden yanlış olduğunu açıklar mısın?'}`;
+  const copy=async t=>{if(window.SGSAndroid){SGSAndroid.copy(t);return true}try{await navigator.clipboard.writeText(t);return true}catch(e){return false}};
+  $('#go',d).onclick=async()=>{const t=prompt();await copy(t);const u='https://claude.ai/new?q='+encodeURIComponent(t.slice(0,6000));if(window.SGSAndroid)SGSAndroid.open(u);else window.open(u,'_blank');d.remove()};
+  $('#cp',d).onclick=async()=>{toast(await copy(prompt())?'Kopyalandı, Claude\'a yapıştırabilirsin':'Kopyalanamadı');d.remove()};
+  $('#x',d).onclick=()=>d.remove(); d.onclick=e=>{if(e.target===d)d.remove()};
+}
+
+/* ---- Kalem ---- */
+let INK={tool:'pen',color:'#d62828',size:3,on:false};
+function inkTools(){return`<div class="tools"><button id="t-on" class="${INK.on?'on':''}">✏️ Kalem ${INK.on?'açık':'kapalı'}</button>${INK.on?`<button data-tool="pen" class="${INK.tool==='pen'?'on':''}">Kalem</button><button data-tool="hl" class="${INK.tool==='hl'?'on':''}">Fosforlu</button><button data-tool="er" class="${INK.tool==='er'?'on':''}">Silgi</button>${['#d62828','#1d4ed8','#111827','#15803d'].map(c=>`<button class="dot" data-color="${c}" style="background:${c};${INK.color===c?'outline:3px solid var(--acc)':''}"></button>`).join('')}<button id="t-clr">Temizle</button>`:''}</div>`}
+function initInk(key){
+  const wrap=$('#qw')||$('.page-wrap'); const cv=$('#ink'); const img=$('#qimg'); if(!cv)return;
+  const fit=async()=>{const r=wrap.getBoundingClientRect();const dpr=devicePixelRatio||1;cv.width=r.width*dpr;cv.height=r.height*dpr;const ctx=cv.getContext('2d');const saved=await idb.get('ink',key);if(saved){const im=new Image();im.onload=()=>ctx.drawImage(im,0,0,cv.width,cv.height);im.src=saved}};
+  if(img.complete)fit();else img.onload=fit;
+  wrap.classList.toggle('draw',INK.on);
+  const tb=$('.tools');
+  tb.querySelector('#t-on').onclick=()=>{INK.on=!INK.on;tb.outerHTML=inkTools();initInk(key)};
+  tb.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{INK.tool=b.dataset.tool;$('.tools').outerHTML=inkTools();initInkTools(key)});
+  tb.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{INK.color=b.dataset.color;INK.tool=INK.tool==='er'?'pen':INK.tool;$('.tools').outerHTML=inkTools();initInkTools(key)});
+  const clr=tb.querySelector('#t-clr'); if(clr)clr.onclick=()=>{cv.getContext('2d').clearRect(0,0,cv.width,cv.height);idb.del('ink',key)};
+  let drawing=false,last=null,saveT2;
+  cv.onpointerdown=e=>{if(!INK.on)return;if(S.set.pen==='pen'&&e.pointerType==='touch')return;drawing=true;last=pt(e);cv.setPointerCapture(e.pointerId);e.preventDefault()};
+  cv.onpointermove=e=>{if(!drawing)return;const p=pt(e);const ctx=cv.getContext('2d');const dpr=devicePixelRatio||1;ctx.lineCap='round';ctx.lineJoin='round';
+    if(INK.tool==='er'){ctx.globalCompositeOperation='destination-out';ctx.lineWidth=22*dpr}else{ctx.globalCompositeOperation='source-over';ctx.strokeStyle=INK.tool==='hl'?INK.color+'55':INK.color;ctx.lineWidth=(INK.tool==='hl'?16:INK.size*(e.pressure>0&&e.pointerType==='pen'?0.5+e.pressure:1))*dpr}
+    ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p};
+  cv.onpointerup=cv.onpointercancel=()=>{if(!drawing)return;drawing=false;clearTimeout(saveT2);saveT2=setTimeout(()=>idb.set('ink',key,cv.toDataURL('image/png')),300)};
+  function pt(e){const r=cv.getBoundingClientRect();const dpr=devicePixelRatio||1;return{x:(e.clientX-r.left)*dpr,y:(e.clientY-r.top)*dpr}}
+}
+function initInkTools(key){initInk(key)}
+
+/* ---- Okuma (ders notu sayfaları / sade anlatım) ---- */
+VIEWS.okuma=async(pid,startPage)=>{
+  shell('Açılıyor',`<div class="card"><span class="spin"></span> Sayfalar açılıyor…</div>`,{tab:'dersler'});
+  const pk=await loadPack(pid);
+  if(pk.kind==='lesson'){ // HTML anlatım
+    shell(pk.title,`<article class="card lesson">${td.decode(pk.raw(pk.html))}</article>`,{tab:'dersler'});return}
+  let i=startPage??(S.marks['read_'+pid]||0);
+  const show=()=>{S.marks['read_'+pid]=i;save();
+    shell(`${pk.title} · ${i+1}/${pk.pages.length}`,`<div class="qwrap page-wrap" id="qw"><img id="qimg" src="${pk.url(pk.pages[i])}" alt="Sayfa ${i+1}"><canvas id="ink"></canvas></div>${inkTools()}
+    <div class="row" style="justify-content:space-between;margin-top:10px"><button class="btn alt small" id="pp" ${i?'':'disabled'}>‹ Önceki</button><button class="btn alt small" id="pg">Sayfaya git</button><button class="btn small" id="pn" ${i+1<pk.pages.length?'':'disabled'}>Sonraki ›</button></div>`,{tab:'dersler'});
+    initInk(pid+':'+i);
+    $('#pp').onclick=()=>{i--;show()};$('#pn').onclick=()=>{i++;show()};
+    $('#pg').onclick=()=>{const n=parseInt(prompt('Sayfa numarası (1-'+pk.pages.length+')'),10);if(n>=1&&n<=pk.pages.length){i=n-1;show()}};
+  };show();
+};
+
+/* ---- Deneme ---- */
+VIEWS.deneme=async()=>{
+  const dp=(await packsOf('questions','deneme'));
+  let h='<p class="mut">Gerçek sınav düzeninde 130 soru: 1–20 genel kültür, 21–30 yabancı dil, 31–130 alan bilgisi. Süre tutulmaz; istediğin zaman ara verip kaldığın yerden devam edebilirsin. Yanlışlar puanı düşürmez, boş bırakma.</p>';
+  for(const p of dp){const pk=await loadPack(p.pid);const groups=[...new Set(pk.questions.map(q=>q.group))];
+    groups.forEach((g,k)=>{const id=p.pid+'#'+g;const r=S.denemeler[id];const cnt=pk.questions.filter(q=>q.group===g).length;
+      h+=`<button class="subj" style="margin-bottom:8px" data-go='["denemeOturum","${p.pid}",${g}]'><h3>Deneme ${k+1}</h3><div class="mut">${cnt} soru · ${r?(r.done?`Bitti: ${r.ok} doğru (${pct(r.ok,cnt)}%)`:`Devam ediyor: ${Object.keys(r.a||{}).length} cevap`):'Başlanmadı'}</div></button>`})}
+  shell('Deneme sınavları',h,{back:false,tab:'deneme'});
+};
+VIEWS.denemeOturum=async(pid,g)=>{
+  const pk=await loadPack(pid); const qs=pk.questions.filter(q=>q.group===g).map(q=>Object.assign({pid},q));
+  const id=pid+'#'+g; const R=S.denemeler[id]||(S.denemeler[id]={a:{},i:0,done:false});
+  const secAd={gk:'Genel kültür',ing:'Yabancı dil',alan:'Alan bilgisi'};
+  const draw=()=>{
+    if(R.done)return result();
+    const q=qs[R.i];
+    shell(`Deneme · ${R.i+1}/${qs.length}`,`<span class="pill">${secAd[q.sec]||''} · soru ${q.n}</span>
+     <div class="qwrap" id="qw" style="margin-top:6px"><img id="qimg" src="${pk.url(q.img)}"><canvas id="ink"></canvas></div>${inkTools()}
+     <div class="opts">${'ABCDE'.split('').map(c=>`<button data-opt="${c}" class="${R.a[q.id]===c?'sel':''}">${c}</button>`).join('')}</div>
+     <div class="row" style="justify-content:space-between"><button class="btn alt small" id="prev" ${R.i?'':'disabled'}>‹</button><button class="btn alt small" id="map">Soru haritası</button><button class="btn small" id="next">${R.i+1<qs.length?'›':'Bitir'}</button></div>
+     <div id="qmap"></div>`,{tab:'deneme'});
+    initInk('d:'+q.id);
+    app.querySelectorAll('[data-opt]').forEach(b=>b.onclick=()=>{R.a[q.id]=R.a[q.id]===b.dataset.opt?undefined:b.dataset.opt;save();app.querySelectorAll('[data-opt]').forEach(x=>x.classList.toggle('sel',x.dataset.opt===R.a[q.id]))});
+    $('#prev').onclick=()=>{R.i--;save();draw()};
+    $('#next').onclick=()=>{if(R.i+1<qs.length){R.i++;save();draw()}else if(confirm('Denemeyi bitirip sonuçları görelim mi?')){R.done=true;let ok=0;for(const q of qs){const c=R.a[q.id];if(c){record(q,c);if(c===q.ans)ok++}}R.ok=ok;save();result()}};
+    $('#map').onclick=()=>{$('#qmap').innerHTML=`<div class="qnav">${qs.map((x,k)=>`<button class="${R.a[x.id]?'a':''} ${k===R.i?'cur':''}" data-k="${k}">${x.n}</button>`).join('')}</div>`;$('#qmap').querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{R.i=+b.dataset.k;save();draw()})};
+  };
+  const result=()=>{
+    const by={};for(const q of qs){const s=q.sec||'alan';const b=by[s]||(by[s]={n:0,ok:0,bos:0});b.n++;const c=R.a[q.id];if(!c)b.bos++;else if(c===q.ans)b.ok++}
+    shell('Deneme sonucu',`<div class="card"><table class="res"><tr><th>Bölüm</th><th>Doğru</th><th>Yanlış</th><th>Boş</th></tr>${Object.entries(by).map(([k,b])=>`<tr><td>${secAd[k]}</td><td>${b.ok}/${b.n}</td><td>${b.n-b.ok-b.bos}</td><td>${b.bos}</td></tr>`).join('')}</table></div>
+    <p class="mut">SGS'de puan diğer adaylara göre hesaplanır (bağıl değerlendirme). Bu yüzden kesin puan veremem; asıl önemli olan, denemeden denemeye doğru sayının artması.</p>
+    <div class="qnav">${qs.map((x,k)=>{const c=R.a[x.id];return`<button class="${c?(c===x.ans?'ok':'bad'):''}" data-k="${k}">${x.n}</button>`}).join('')}</div>
+    <div class="row" style="margin-top:12px"><button class="btn alt" id="again">Denemeyi sıfırla</button></div>`,{tab:'deneme'});
+    app.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{SES={qs,i:+b.dataset.k,f:{mode:'kaynak',pid},picked:Object.fromEntries(qs.map(q=>[q.id,R.a[q.id]||'-'])),title:'Deneme incelemesi'};showQ()});
+    $('#again').onclick=()=>{if(confirm('Bu denemedeki cevaplar silinsin mi?')){delete S.denemeler[id];save();VIEWS.denemeOturum(pid,g)}};
+  };
+  draw();
+};
+
+/* ---- Tekrar ---- */
+VIEWS.tekrar=()=>{
+  const due=Object.entries(S.ans).filter(([k,a])=>isDue(a));const later=Object.values(S.ans).filter(a=>a.wrong&&!isDue(a)).length;
+  const bySub={};for(const[k,a]of due)bySub[a.sub]=(bySub[a.sub]||0)+1;
+  const marked=Object.keys(S.marks).filter(k=>S.marks[k]&&!k.startsWith('read_')).length;
+  shell('Tekrar',`<div class="card"><div class="stat"><div><b>${due.length}</b><span class="mut">bugün tekrar</span></div><div><b>${later}</b><span class="mut">ileride tekrar</span></div><div><b>${marked}</b><span class="mut">işaretli</span></div></div></div>
+  <p class="mut">Yanlış yaptığın soru ertesi gün, sonra 3, 7, 16 ve 35 gün arayla tekrar gelir. Arka arkaya doğru bilince defterden çıkar.</p>
+  ${due.length?`<button class="btn" data-go='["oturum",{"mode":"due"}]'>Hepsini tekrar et (${due.length})</button>`:'<div class="card">Bugün tekrar bekleyen soru yok.</div>'}
+  ${Object.entries(bySub).map(([s,n])=>`<button class="subj" style="margin-top:8px" data-go='["oturum",{"mode":"due","sub":"${s}"}]'><h3>${esc(SUBJ_AD[s]||'Deneme')}</h3><div class="mut">${n} soru</div></button>`).join('')}`,{back:false,tab:'tekrar'});
+};
+
+/* ---- Ayarlar ---- */
+VIEWS.ayar=async()=>{
+  const m=await getManifest();const n=Object.values(m.packs).reduce((a,p)=>a+(p.size||0),0);
+  shell('Ayarlar',`
+  <div class="card"><h3 style="margin:0 0 8px">Çalışma</h3>
+   <label>Bir sette kaç soru: <select id="per">${[10,20,30,40].map(x=>`<option ${S.set.per===x?'selected':''}>${x}</option>`).join('')}</select></label><br><br>
+   <label>Kalem: <select id="pen"><option value="any" ${S.set.pen==='any'?'selected':''}>Parmak ve kalem çizer</option><option value="pen" ${S.set.pen==='pen'?'selected':''}>Sadece tablet kalemi çizer (avuç içi yok sayılır)</option></select></label></div>
+  <div class="card"><h3 style="margin:0 0 8px">Çevrimdışı kullanım</h3><p class="mut">Tüm içerik yaklaşık ${(n/1e6).toFixed(0)} MB. Bir kez indirirsen internet olmadan da çalışır.</p><button class="btn" id="dl">Hepsini cihaza indir</button> <span id="dls" class="mut"></span></div>
+  <div class="card"><h3 style="margin:0 0 8px">Yedek</h3><p class="mut">İlerlemeni (cevaplar, tekrar defteri, denemeler) dosyaya al; diğer cihazda "Yedeği yükle" ile aynısını aç. Otomatik eşitleme bir sonraki sürümde geliyor.</p>
+   <div class="row"><button class="btn alt" id="exp">Yedeği al</button><label class="btn alt">Yedeği yükle<input type="file" id="imp" accept=".json" hidden></label></div></div>
+  <div class="card"><h3 style="margin:0 0 8px">Güvenlik</h3><p class="mut">İçerik şifreli olarak durur, yalnızca parolanla açılır. Bu cihazda parola hatırlanıyor.</p><button class="btn alt" id="lock">Bu cihazda kilitle</button></div>`,{back:false,tab:'ayar'});
+  $('#per').onchange=e=>{S.set.per=+e.target.value;save()};$('#pen').onchange=e=>{S.set.pen=e.target.value;save()};
+  $('#dl').onclick=async()=>{const ids=Object.keys(m.packs);let k=0;for(const id of ids){$('#dls').textContent=`${++k}/${ids.length}`;try{await loadPack(id)}catch(e){}}$('#dls').textContent='Hazır ✓'};
+  $('#exp').onclick=()=>{const name='sgs-yedek-'+new Date().toISOString().slice(0,10)+'.json',txt=JSON.stringify({v:1,t:Date.now(),S});if(window.SGSAndroid){SGSAndroid.save(name,txt);toast('İndirilenler klasörüne kaydedildi');return}const b=new Blob([txt],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sgs-yedek-'+new Date().toISOString().slice(0,10)+'.json';a.click()};
+  $('#imp').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(confirm('Bu cihazdaki ilerlemenin yerine yedek yüklensin mi?')){S=Object.assign(S,x.S);save();toast('Yedek yüklendi')}}catch(err){toast('Dosya okunamadı')}};
+  $('#lock').onclick=async()=>{await idb.del('kv','key');KEY=null;lockScreen()};
+};
+
+/* ====== Kilit ====== */
+function lockScreen(msg){
+  app.innerHTML=`<div class="lock"><div class="card"><div style="font-size:42px">📘</div><h2>SGS Çalışma</h2><p class="mut">Sana özel, şifreli çalışma alanı.</p>
+  <input type="password" id="pw" placeholder="Parola" autocomplete="current-password"><button class="btn" id="un" style="width:100%;margin-top:10px">Aç</button><p id="msg" class="mut">${esc(msg||'')}</p></div></div>`;
+  const go_=async()=>{$('#msg').innerHTML='<span class="spin"></span>';try{await unlock($('#pw').value);ROUTE=[];go('bugun')}catch(e){$('#msg').textContent=e.message==='Bağlantı yok'?'İlk açılışta internet gerekiyor.':'Parola yanlış.'}};
+  $('#un').onclick=go_;$('#pw').onkeydown=e=>{if(e.key==='Enter')go_()};
+}
+(async()=>{
+  loadState();
+  if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+  try{KEY=await idb.get('kv','key')}catch(e){}
+  if(KEY){await getManifest();go('bugun')}else lockScreen();
+})();
+</script>
+</body>
+</html>
