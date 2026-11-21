@@ -10,182 +10,6 @@
   "data": "bBJNvDVE8WXJkQO1AcY9fz31tRB6wChHYsBo40iZYI0Z4qkHkaF96cor8RGBoKCV"
  },
  "packs": {
-  "q_muh_tarama": {
-   "file": "84e820078ce94bb869be.bin",
-   "size": 3720907,
-   "title": "Prensip · Muhasebe tarama testleri",
-   "kind": "questions",
-   "subject": "fm",
-   "count": 200
-  },
-  "q_kamp_muhasebe": {
-   "file": "ec0bdc84d30b97f90eaf.bin",
-   "size": 2996112,
-   "title": "Prensip · Muhasebe kamp",
-   "kind": "questions",
-   "subject": "fm",
-   "count": 130
-  },
-  "q_fm_dersnotu": {
-   "file": "b4adf4d9b32f3457830c.bin",
-   "size": 6787893,
-   "title": "Prensip · Ders notu konu testleri",
-   "kind": "questions",
-   "subject": "fm",
-   "count": 301
-  },
-  "q_deneme_7BKLL": {
-   "file": "fd142cce56fc00adeeb0.bin",
-   "size": 1888045,
-   "title": "Prensip · Finansal muhasebe testleri",
-   "kind": "questions",
-   "subject": "fm",
-   "count": 118
-  },
-  "q_kamp_standartlar": {
-   "file": "720a03e0e996aab987c2.bin",
-   "size": 5218601,
-   "title": "Prensip · Standartlar kamp",
-   "kind": "questions",
-   "subject": "std",
-   "count": 195
-  },
-  "q_maliyet_tarama": {
-   "file": "6fbf8f70a5343084df10.bin",
-   "size": 2136495,
-   "title": "Prensip · Maliyet tarama",
-   "kind": "questions",
-   "subject": "mlt",
-   "count": 95
-  },
-  "q_kamp_maliyet": {
-   "file": "41ca27736051ca46b59b.bin",
-   "size": 2249316,
-   "title": "Prensip · Maliyet kamp",
-   "kind": "questions",
-   "subject": "mlt",
-   "count": 79
-  },
-  "q_analiz_tarama": {
-   "file": "c695befdec9ce968b10a.bin",
-   "size": 2662424,
-   "title": "Prensip · Analiz tarama",
-   "kind": "questions",
-   "subject": "anz",
-   "count": 198
-  },
-  "q_kamp_analiz": {
-   "file": "c0120305b48228cb9800.bin",
-   "size": 79253,
-   "title": "Prensip · Analiz kamp",
-   "kind": "questions",
-   "subject": "anz",
-   "count": 1
-  },
-  "q_denetim_bolumsorulari": {
-   "file": "61654b91a42c02bf187f.bin",
-   "size": 3614343,
-   "title": "Prensip · Denetim bölüm soruları",
-   "kind": "questions",
-   "subject": "dnt",
-   "count": 200
-  },
-  "q_vergi_tarama": {
-   "file": "c705431a92239b34402f.bin",
-   "size": 1690911,
-   "title": "Prensip · Vergi tarama",
-   "kind": "questions",
-   "subject": "vrg",
-   "count": 100
-  },
-  "q_ticaret_tarama": {
-   "file": "165504680ca3c60c6848.bin",
-   "size": 1639754,
-   "title": "Prensip · Ticaret tarama",
-   "kind": "questions",
-   "subject": "tic",
-   "count": 114
-  },
-  "q_kamp_ticaret": {
-   "file": "80dd0183fe49301fbf81.bin",
-   "size": 2213340,
-   "title": "Prensip · Ticaret kamp",
-   "kind": "questions",
-   "subject": "tic",
-   "count": 113
-  },
-  "q_borclar_tarama": {
-   "file": "9a17d910c38a0c2adcbf.bin",
-   "size": 854153,
-   "title": "Prensip · Borçlar tarama",
-   "kind": "questions",
-   "subject": "brc",
-   "count": 65
-  },
-  "q_kamp_borclar": {
-   "file": "aa718733533c563a8765.bin",
-   "size": 2749181,
-   "title": "Prensip · Borçlar kamp",
-   "kind": "questions",
-   "subject": "brc",
-   "count": 126
-  },
-  "q_is_tarama": {
-   "file": "a6afb6665168ad962a5d.bin",
-   "size": 1392623,
-   "title": "Prensip · İş ve SGK tarama",
-   "kind": "questions",
-   "subject": "is",
-   "count": 87
-  },
-  "q_kamp_is": {
-   "file": "d7261ea8f3491d98c890.bin",
-   "size": 2951490,
-   "title": "Prensip · İş ve SGK kamp",
-   "kind": "questions",
-   "subject": "is",
-   "count": 143
-  },
-  "q_meslek_tarama": {
-   "file": "dc581280b3d7a43e239a.bin",
-   "size": 5432334,
-   "title": "Prensip · Meslek hukuku tarama",
-   "kind": "questions",
-   "subject": "mes",
-   "count": 200
-  },
-  "q_kamp_meslek": {
-   "file": "75358b79bd552129710b.bin",
-   "size": 5394934,
-   "title": "Prensip · Meslek hukuku kamp",
-   "kind": "questions",
-   "subject": "mes",
-   "count": 166
-  },
-  "q_hukuk_grubu_tarama": {
-   "file": "5e9e333d5a0da6b3724d.bin",
-   "size": 3914518,
-   "title": "Prensip · Hukuk grubu tarama",
-   "kind": "questions",
-   "subject": "hk",
-   "count": 216
-  },
-  "q_deneme_vzvAW": {
-   "file": "a57f3e41863ccf90b66f.bin",
-   "size": 17155305,
-   "title": "Prensip · SGS denemeleri (130 soru)",
-   "kind": "questions",
-   "subject": "deneme",
-   "count": 904
-  },
-  "q_kamp_denetim": {
-   "file": "02342fc31b361a3a5e13.bin",
-   "size": 1452411,
-   "title": "Prensip · Denetim kamp",
-   "kind": "questions",
-   "subject": "dnt",
-   "count": 90
-  },
   "d_fm_dersnotu": {
    "file": "0ec5817f4fa6661e4583.bin",
    "size": 9656903,
@@ -297,6 +121,1350 @@
    "kind": "lesson",
    "subject": "fm",
    "count": null
+  },
+  "mk_mali_analiz_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "2cdc11314a793c723dac.bin",
+   "size": 2569216,
+   "title": "Mali Kampüs · Ders 1 · amam İİ",
+   "kind": "doc",
+   "subject": "anz",
+   "count": 53
+  },
+  "mk_mali_analiz_kamp_lesson_yuksek_kalite_4_pdf": {
+   "file": "a5b3f58734f716ade3ca.bin",
+   "size": 4080545,
+   "title": "Mali Kampüs · Kamp 2 · 2026/2 SGS MALİ TABLOLAR ANALİZ",
+   "kind": "doc",
+   "subject": "anz",
+   "count": 78
+  },
+  "mk_mali_analiz_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "b51cf5198fa0264ccb15.bin",
+   "size": 151430,
+   "title": "Mali Kampüs · Ders 3 · 2. FAALİYET ORANLARI",
+   "kind": "doc",
+   "subject": "anz",
+   "count": 6
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "ed29f25192859180b592.bin",
+   "size": 1671510,
+   "title": "Mali Kampüs · Ders 1 · 103 VERİLEN ÇEKLER VE ÖDEME EMİRLERİ HESABI (9)",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 24
+  },
+  "mk_standartlar_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "4542a790f9b29fd1d14f.bin",
+   "size": 2980443,
+   "title": "Mali Kampüs · Ders 1 · FİNANSAL RAPORLAMAYA İLİŞKİN Bu ölçüm esasları aşağıda belir",
+   "kind": "doc",
+   "subject": "std",
+   "count": 24
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_4_pdf": {
+   "file": "7c13364ce63ec6752d4a.bin",
+   "size": 3694938,
+   "title": "Mali Kampüs · Ders 2 · O) Sermaye Olarak Kasa*tSenet Girişi",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 41
+  },
+  "mk_standartlar_kamp_lesson_yuksek_kalite_4_pdf": {
+   "file": "fc26ff0550200e464d3d.bin",
+   "size": 4828029,
+   "title": "Mali Kampüs · Kamp 2 · 2026/2 SGS STANDARTLAR",
+   "kind": "doc",
+   "subject": "std",
+   "count": 80
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "660e3abd18989b0c06f1.bin",
+   "size": 3648540,
+   "title": "Mali Kampüs · Ders 3 · İşletme ortaklarından Bay C, ihtiyaç duyduğu ürünleri ortağı",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 41
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_6_pdf": {
+   "file": "46732f4450fd4827636d.bin",
+   "size": 3826958,
+   "title": "Mali Kampüs · Ders 4 · Faiz Gideri: 40.000 b tutarındaki faiz borçlanma maliyeti ol",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 41
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_7_pdf": {
+   "file": "4ac0e212d1d6475a17e0.bin",
+   "size": 3621014,
+   "title": "Mali Kampüs · Ders 5 · Finansal Yapı (Pasif) ENE KRALA",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 75
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_8_pdf": {
+   "file": "c91813be3cc2bd72351e.bin",
+   "size": 14251256,
+   "title": "Mali Kampüs · Ders 6 · 26/2 SGS FİNANSAL MUHASEBE",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 270
+  },
+  "mk_finansal_muhasebe_ders_lesson_yuksek_kalite_9_pdf": {
+   "file": "ecfd1b4816b94364bee6.bin",
+   "size": 65878,
+   "title": "Mali Kampüs · Ders 7 · # TEKDUZEN HESAP PLANI #",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 1
+  },
+  "l_fm02": {
+   "file": "87c2b415d483d827089d.bin",
+   "size": 6040,
+   "title": "2 · Hazır değerler ve KDV: paranın muhasebesi",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "l_fm03": {
+   "file": "12bec336e6e178036e20.bin",
+   "size": 5433,
+   "title": "3 · Menkul kıymetler: kısa vadeli yatırımlar",
+   "kind": "lesson",
+   "subject": "fm",
+   "count": null
+  },
+  "mk_finansal_muhasebe_kamp_lesson_yuksek_kalite_10_pdf": {
+   "file": "24d894ad5db25f498a7f.bin",
+   "size": 14251827,
+   "title": "Mali Kampüs · Kamp 8 · 26/2 SGS FİNANSAL MUHASEBE",
+   "kind": "doc",
+   "subject": "fm",
+   "count": 270
+  },
+  "q_muh_tarama": {
+   "file": "a1550eb4390fbf780d37.bin",
+   "size": 3723307,
+   "title": "Prensip · Muhasebe tarama testleri",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 200
+  },
+  "q_kamp_muhasebe": {
+   "file": "730c10da7a2628ee9e81.bin",
+   "size": 2918339,
+   "title": "Prensip · Muhasebe kamp",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 130
+  },
+  "q_fm_dersnotu": {
+   "file": "320af495a7f715aaeebd.bin",
+   "size": 6605438,
+   "title": "Prensip · Ders notu konu testleri",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 290
+  },
+  "q_deneme_7BKLL_fm": {
+   "file": "e87708db659de7ad4b2f.bin",
+   "size": 3784284,
+   "title": "Prensip · Konu testleri (Finansal Muhasebe)",
+   "kind": "questions",
+   "subject": "fm",
+   "count": 187
+  },
+  "q_deneme_7BKLL_mlt": {
+   "file": "6fce27ceab1bfcea9447.bin",
+   "size": 2230996,
+   "title": "Prensip · Konu testleri (Maliyet)",
+   "kind": "questions",
+   "subject": "mlt",
+   "count": 102
+  },
+  "q_deneme_7BKLL_dnt": {
+   "file": "14deb7db24001f869515.bin",
+   "size": 1637161,
+   "title": "Prensip · Konu testleri (Denetim)",
+   "kind": "questions",
+   "subject": "dnt",
+   "count": 99
+  },
+  "q_deneme_7BKLL_anz": {
+   "file": "6e7544fa9a5110d546be.bin",
+   "size": 998503,
+   "title": "Prensip · Konu testleri (Analiz)",
+   "kind": "questions",
+   "subject": "anz",
+   "count": 70
+  },
+  "q_deneme_7BKLL_std": {
+   "file": "5db3fbfd1267a0139962.bin",
+   "size": 1196088,
+   "title": "Prensip · Konu testleri (Standartlar)",
+   "kind": "questions",
+   "subject": "std",
+   "count": 74
+  },
+  "q_kamp_standartlar": {
+   "file": "136bc55c6bf12edff760.bin",
+   "size": 5195360,
+   "title": "Prensip · Standartlar kamp",
+   "kind": "questions",
+   "subject": "std",
+   "count": 195
+  },
+  "q_kamp_maliyet": {
+   "file": "21d3d1ed9a2810a06835.bin",
+   "size": 2250343,
+   "title": "Prensip · Maliyet kamp",
+   "kind": "questions",
+   "subject": "mlt",
+   "count": 79
+  },
+  "q_analiz_tarama": {
+   "file": "2952e0d0a5e74efd895d.bin",
+   "size": 2664800,
+   "title": "Prensip · Analiz tarama",
+   "kind": "questions",
+   "subject": "anz",
+   "count": 198
+  },
+  "q_kamp_analiz": {
+   "file": "9e901b514983fb6f5d26.bin",
+   "size": 1323096,
+   "title": "Prensip · Analiz kamp",
+   "kind": "questions",
+   "subject": "anz",
+   "count": 80
+  },
+  "q_denetim_bolumsorulari": {
+   "file": "98d813a32413921cde28.bin",
+   "size": 3616943,
+   "title": "Prensip · Denetim bölüm soruları",
+   "kind": "questions",
+   "subject": "dnt",
+   "count": 200
+  },
+  "q_denetim_deneme": {
+   "file": "0ea2dfa6148a9173b4aa.bin",
+   "size": 2440122,
+   "title": "Prensip · Denetim denemeleri",
+   "kind": "questions",
+   "subject": "dnt",
+   "count": 160
+  },
+  "q_kamp_denetim": {
+   "file": "d1cafccc2dbbd13a1763.bin",
+   "size": 1453581,
+   "title": "Prensip · Denetim kamp",
+   "kind": "questions",
+   "subject": "dnt",
+   "count": 90
+  },
+  "q_vergi_tarama": {
+   "file": "9065143ba5904422e3f9.bin",
+   "size": 1692111,
+   "title": "Prensip · Vergi tarama",
+   "kind": "questions",
+   "subject": "vrg",
+   "count": 100
+  },
+  "q_ticaret_tarama": {
+   "file": "698238d15ca265d5d7da.bin",
+   "size": 1910253,
+   "title": "Prensip · Ticaret tarama",
+   "kind": "questions",
+   "subject": "tic",
+   "count": 136
+  },
+  "q_kamp_ticaret": {
+   "file": "b2aab90308b91084f89b.bin",
+   "size": 2255507,
+   "title": "Prensip · Ticaret kamp",
+   "kind": "questions",
+   "subject": "tic",
+   "count": 115
+  },
+  "q_borclar_tarama": {
+   "file": "9017abd32533547724ef.bin",
+   "size": 912393,
+   "title": "Prensip · Borçlar tarama",
+   "kind": "questions",
+   "subject": "brc",
+   "count": 73
+  },
+  "q_kamp_borclar": {
+   "file": "dcc1a2331459d2f8c5e4.bin",
+   "size": 2750819,
+   "title": "Prensip · Borçlar kamp",
+   "kind": "questions",
+   "subject": "brc",
+   "count": 126
+  },
+  "q_kamp_is": {
+   "file": "6fcbd3b9b9eb7587ece1.bin",
+   "size": 2953206,
+   "title": "Prensip · İş ve SGK kamp",
+   "kind": "questions",
+   "subject": "is",
+   "count": 143
+  },
+  "q_meslek_tarama": {
+   "file": "3e8278cb2326f4375d45.bin",
+   "size": 5434934,
+   "title": "Prensip · Meslek hukuku tarama",
+   "kind": "questions",
+   "subject": "mes",
+   "count": 200
+  },
+  "q_kamp_meslek": {
+   "file": "a152edd50329704e0790.bin",
+   "size": 5397092,
+   "title": "Prensip · Meslek hukuku kamp",
+   "kind": "questions",
+   "subject": "mes",
+   "count": 166
+  },
+  "q_hukuk_grubu_tarama_tic": {
+   "file": "06ce5617c12278050fbf.bin",
+   "size": 2188601,
+   "title": "Prensip · Hukuk grubu tarama (Ticaret)",
+   "kind": "questions",
+   "subject": "tic",
+   "count": 138
+  },
+  "q_hukuk_grubu_tarama_brc": {
+   "file": "08a774751d656c23a254.bin",
+   "size": 2277828,
+   "title": "Prensip · Hukuk grubu tarama (Borçlar)",
+   "kind": "questions",
+   "subject": "brc",
+   "count": 127
+  },
+  "q_hukuk_grubu_tarama_vrg": {
+   "file": "249d738b815b11238980.bin",
+   "size": 1562206,
+   "title": "Prensip · Hukuk grubu tarama (Vergi)",
+   "kind": "questions",
+   "subject": "vrg",
+   "count": 119
+  },
+  "q_hukuk_grubu_tarama_mes": {
+   "file": "69f84f1d6cea6818fb0f.bin",
+   "size": 4106073,
+   "title": "Prensip · Hukuk grubu tarama (Meslek hukuku)",
+   "kind": "questions",
+   "subject": "mes",
+   "count": 158
+  },
+  "q_hukuk_grubu_tarama_is": {
+   "file": "251eb9d1013a7e47c264.bin",
+   "size": 4104980,
+   "title": "Prensip · Hukuk grubu tarama (İş ve SGK)",
+   "kind": "questions",
+   "subject": "is",
+   "count": 229
+  },
+  "q_deneme_vzvAW": {
+   "file": "193af4ea24bccce4139c.bin",
+   "size": 17154806,
+   "title": "Prensip · SGS denemeleri (130 soru)",
+   "kind": "questions",
+   "subject": "deneme",
+   "count": 904
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_dusuk_kalite_pdf": {
+   "file": "3db4a2cb8780fdae78c7.bin",
+   "size": 37455,
+   "title": "Mali Kampüs · Kamp 1 · I ker A a | sd",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 2
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "6ac48ee7c798c650aee8.bin",
+   "size": 3904507,
+   "title": "Mali Kampüs · Ders 2 · (kitap ile uyumlu ders videoları)",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 73
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_3_pdf": {
+   "file": "f0a4ed6fbae5610200a6.bin",
+   "size": 306354,
+   "title": "Mali Kampüs · Kamp 3 · 2017/3 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 8
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_4_pdf": {
+   "file": "6312fe0dd5286c32436d.bin",
+   "size": 652414,
+   "title": "Mali Kampüs · Ders 4 · FİNANSAL | MUHASEBE MALİYET | MUHASEBESİ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 22
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_4_pdf": {
+   "file": "8ed9003327ca9d01d4a0.bin",
+   "size": 320662,
+   "title": "Mali Kampüs · Kamp 5 · HAZIRLAYAN : SMMM AHMET KAYMAZ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 9
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "c0b6ded8aa5e40900ce4.bin",
+   "size": 329701,
+   "title": "Mali Kampüs · Ders 6 · 2016/2 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 14
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_5_pdf": {
+   "file": "54b4959481997c4b9036.bin",
+   "size": 37085,
+   "title": "Mali Kampüs · Kamp 7 · MİKTAR BİRİM TUTAR MİKTAR BİRİM TUTAR MİKTAR BİRİM TUTAR",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 2
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_6_pdf": {
+   "file": "c71faa327f349cf9986f.bin",
+   "size": 37085,
+   "title": "Mali Kampüs · Ders 8 · MİKTAR BİRİM TUTAR MİKTAR BİRİM TUTAR MİKTAR BİRİM TUTAR",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 2
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_6_pdf": {
+   "file": "4fa897f41b59ccae274f.bin",
+   "size": 329701,
+   "title": "Mali Kampüs · Kamp 9 · 2016/2 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 14
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_7_pdf": {
+   "file": "23b01843a1b1e9e2006d.bin",
+   "size": 359333,
+   "title": "Mali Kampüs · Ders 10 · HAZIRLAYAN : SMMM AHMET KAYMAZ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 9
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_7_pdf": {
+   "file": "4bccb34c40788778492d.bin",
+   "size": 359333,
+   "title": "Mali Kampüs · Kamp 11 · HAZIRLAYAN : SMMM AHMET KAYMAZ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 9
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_8_pdf": {
+   "file": "88d407b601e0f6837d1f.bin",
+   "size": 320663,
+   "title": "Mali Kampüs · Ders 12 · HAZIRLAYAN : SMMM AHMET KAYMAZ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 9
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_8_pdf": {
+   "file": "63723a4653748ba9b413.bin",
+   "size": 602775,
+   "title": "Mali Kampüs · Kamp 13 · HAZIRLAYAN : SMMM AHMET KAYMAZ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 14
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_9_pdf": {
+   "file": "8f7c6ca5968ce4a12157.bin",
+   "size": 187492,
+   "title": "Mali Kampüs · Ders 14 · CKT ÜRETİM İŞLETMESİ kesim ve dikim olmak üzere 2 esas üreti",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 5
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_9_pdf": {
+   "file": "63a24c7b9a765456e700.bin",
+   "size": 652415,
+   "title": "Mali Kampüs · Kamp 15 · FİNANSAL | MUHASEBE MALİYET | MUHASEBESİ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 22
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_10_pdf": {
+   "file": "47126917afe0408457c0.bin",
+   "size": 1038799,
+   "title": "Mali Kampüs · Ders 16 · 2026/1 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 30
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_10_pdf": {
+   "file": "8a66c5949bb5c9357ed8.bin",
+   "size": 346300,
+   "title": "Mali Kampüs · Kamp 17 · 2026/2 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 8
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_11_pdf": {
+   "file": "92c15d2807bad7f428b2.bin",
+   "size": 852281,
+   "title": "Mali Kampüs · Ders 18 · 2026/1 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 29
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_11_pdf": {
+   "file": "6df913d426cc4d596269.bin",
+   "size": 1038799,
+   "title": "Mali Kampüs · Kamp 19 · 2026/1 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 30
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_12_pdf": {
+   "file": "0a4373e4318046a6d7c2.bin",
+   "size": 346300,
+   "title": "Mali Kampüs · Ders 20 · 2026/2 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 8
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_12_pdf": {
+   "file": "17f4b0acccfdcd8e720f.bin",
+   "size": 252643,
+   "title": "Mali Kampüs · Kamp 21 · 2025/3 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 8
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_13_pdf": {
+   "file": "7f6885a8efaff0804e10.bin",
+   "size": 349153,
+   "title": "Mali Kampüs · Ders 22 · Safha maliyeti yöntemini uygulayan bir",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 9
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_13_pdf": {
+   "file": "763e1f8454f87b47539a.bin",
+   "size": 852281,
+   "title": "Mali Kampüs · Kamp 23 · 2026/1 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 29
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_14_pdf": {
+   "file": "8efa5e6dbfa5791442a1.bin",
+   "size": 396750,
+   "title": "Mali Kampüs · Ders 24 · sö il RR || PT ye pen",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 13
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_14_pdf": {
+   "file": "5ea23a573361b8ee97a3.bin",
+   "size": 349153,
+   "title": "Mali Kampüs · Kamp 25 · Safha maliyeti yöntemini uygulayan bir",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 9
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_15_pdf": {
+   "file": "7645e6cc82437850896d.bin",
+   "size": 211759,
+   "title": "Mali Kampüs · Ders 26 · HAZIRLAYAN : SMMM AHMET KAYMAZ",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 7
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_15_pdf": {
+   "file": "5d131510a012cfccd35a.bin",
+   "size": 416680,
+   "title": "Mali Kampüs · Kamp 27 · 2025/3 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 12
+  },
+  "mk_maliyet_muhasebesi_ders_lesson_yuksek_kalite_16_pdf": {
+   "file": "e39f704fea05a4e41f36.bin",
+   "size": 416680,
+   "title": "Mali Kampüs · Ders 28 · 2025/3 SINAV SORUSU",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 12
+  },
+  "mk_maliyet_muhasebesi_kamp_lesson_yuksek_kalite_16_pdf": {
+   "file": "a1be96091920ec20e25d.bin",
+   "size": 806400,
+   "title": "Mali Kampüs · Kamp 29 · SORU 2 : “KMZ” Üretim İşletmesi'nin aylık satış ve maliyet b",
+   "kind": "doc",
+   "subject": "mlt",
+   "count": 20
+  },
+  "mk_borlar_hukuku_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "314cfb40246e9da3f377.bin",
+   "size": 827770,
+   "title": "Mali Kampüs · Ders 1 · 2.2. Nisbilik İlkesi",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 9
+  },
+  "mk_borlar_hukuku_ders_lesson_yuksek_kalite_4_pdf": {
+   "file": "b4c8442eaa1c03e5fb85.bin",
+   "size": 1568025,
+   "title": "Mali Kampüs · Ders 2 · V Fiyatını göstererek mal sergilenmesi veya tarife, fiyat li",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 17
+  },
+  "mk_borlar_hukuku_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "b7a556c60ac930dc049a.bin",
+   "size": 907373,
+   "title": "Mali Kampüs · Ders 3 · için geçerli olabilir ve kamu düzenine veya genel ahlaka ayk",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 11
+  },
+  "mk_borlar_hukuku_ders_lesson_yuksek_kalite_6_pdf": {
+   "file": "106368aa29e2a80e9129.bin",
+   "size": 2114048,
+   "title": "Mali Kampüs · Ders 4 · 1.2. İFA YERİ",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 21
+  },
+  "mk_borlar_hukuku_ders_lesson_yuksek_kalite_7_pdf": {
+   "file": "03fbd25d2f3df1700f25.bin",
+   "size": 840101,
+   "title": "Mali Kampüs · Ders 5 · Devir Borcu | Bu tip sözleşmeler, hakkın kesin olarak devrin",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 11
+  },
+  "mk_borlar_hukuku_kamp_lesson_yuksek_kalite_8_pdf": {
+   "file": "95c417e89532cdba02c1.bin",
+   "size": 4815124,
+   "title": "Mali Kampüs · Kamp 6 · 2026/2 SGS BORÇLAR HUKUKU",
+   "kind": "doc",
+   "subject": "brc",
+   "count": 77
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_3_pdf": {
+   "file": "18d227921e421a34b9c2.bin",
+   "size": 784355,
+   "title": "Mali Kampüs · Ders 1 · İnsan ihtiyaçlarını karşılayacak kaynakların sınırlı olması ",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 21
+  },
+  "mk_ekonomi_kamp_kamp_3_pdf": {
+   "file": "65d47dae72a40b32fadd.bin",
+   "size": 332543,
+   "title": "Mali Kampüs · Kamp 2 · TÜRMOB-TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 4
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_4_pdf": {
+   "file": "e35655d13d6093d9902c.bin",
+   "size": 720472,
+   "title": "Mali Kampüs · Ders 3 · Mal ve hizmetlerin ihtiyaçları karşılama özelliğine fayda de",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 21
+  },
+  "mk_ekonomi_kamp_kamp_4_pdf": {
+   "file": "05d2074120bfc5713b6e.bin",
+   "size": 426693,
+   "title": "Mali Kampüs · Kamp 4 · TÜRMOB-TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 6
+  },
+  "mk_meslek_hukuku_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "221eb802c1c2f7a8bcdb.bin",
+   "size": 4358750,
+   "title": "Mali Kampüs · Ders 1 · ÇIKMIŞ SORULARLA",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 69
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_5_pdf": {
+   "file": "45ff43a89c145704ef0b.bin",
+   "size": 729183,
+   "title": "Mali Kampüs · Ders 5 · Talep: Tüketicinin çeşitli fiyatlardan satın almak istediği ",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 29
+  },
+  "mk_ekonomi_kamp_kamp_5_pdf": {
+   "file": "5075cf966831bdcd7561.bin",
+   "size": 377356,
+   "title": "Mali Kampüs · Kamp 6 · TÜRMOB-TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 4
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_6_pdf": {
+   "file": "539a058ee201a5333e9f.bin",
+   "size": 561055,
+   "title": "Mali Kampüs · Ders 7 · kullanarak, belli bir teknoloji aracılığıyla mal ve hizmet ü",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 15
+  },
+  "mk_ekonomi_kamp_kamp_6_pdf": {
+   "file": "cd908fffedb350bcf209.bin",
+   "size": 279053,
+   "title": "Mali Kampüs · Kamp 8 · TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 4
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_7_pdf": {
+   "file": "79db79ffe0860d504067.bin",
+   "size": 334591,
+   "title": "Mali Kampüs · Ders 9 · Piyasa Kavramı",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 12
+  },
+  "mk_ekonomi_kamp_kamp_7_pdf": {
+   "file": "6c962d51b05bfc5a056d.bin",
+   "size": 319807,
+   "title": "Mali Kampüs · Kamp 10 · Zi TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 5
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_8_pdf": {
+   "file": "0a3b7b70485b5adba4e8.bin",
+   "size": 230231,
+   "title": "Mali Kampüs · Ders 11 · Zİ 1) MONOPOL PİYASASININ TANIMI VE ÖZELLİKLERİ si",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 6
+  },
+  "mk_meslek_hukuku_ders_lesson_yuksek_kalite_4_pdf": {
+   "file": "c2a7bcc2731b2ab4bd69.bin",
+   "size": 3964591,
+   "title": "Mali Kampüs · Ders 2 · GÜNCELLEME TARİHİ:",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 53
+  },
+  "mk_ekonomi_kamp_kamp_8_pdf": {
+   "file": "e5df7b9f4345e4328a1c.bin",
+   "size": 399515,
+   "title": "Mali Kampüs · Kamp 12 · TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 5
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_9_pdf": {
+   "file": "65aee03546d4ef2a8900.bin",
+   "size": 115271,
+   "title": "Mali Kampüs · Ders 13 · 1)Tekelci Rekabet Piyasasının Tanımı ve Özellikleri",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 5
+  },
+  "mk_ekonomi_kamp_kamp_9_pdf": {
+   "file": "dd62bedd648232525b75.bin",
+   "size": 399781,
+   "title": "Mali Kampüs · Kamp 14 · TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 5
+  },
+  "mk_meslek_hukuku_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "79703c3d23379c5f6161.bin",
+   "size": 1034527,
+   "title": "Mali Kampüs · Ders 3 · GÜNCELLENME TARİHİ:",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 14
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_10_pdf": {
+   "file": "6e0a1cbd2dd77248273f.bin",
+   "size": 415244,
+   "title": "Mali Kampüs · Ders 15 · 1.Oligopolün Tanımı Ve Özellikleri",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 8
+  },
+  "mk_ekonomi_kamp_kamp_10_pdf": {
+   "file": "3f97c5e270eeab2b0e68.bin",
+   "size": 407409,
+   "title": "Mali Kampüs · Kamp 16 · TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 6
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_11_pdf": {
+   "file": "c1c57f41046260be7733.bin",
+   "size": 118445,
+   "title": "Mali Kampüs · Ders 17 · Faktör Piyasası",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 5
+  },
+  "mk_ekonomi_kamp_kamp_11_pdf": {
+   "file": "c2bf8fd948a2f5df3088.bin",
+   "size": 327753,
+   "title": "Mali Kampüs · Kamp 18 · hi TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 4
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_12_pdf": {
+   "file": "aa08b67651bdc01e5b4a.bin",
+   "size": 701297,
+   "title": "Mali Kampüs · Ders 19 · MAKRO IKTISADIN TANIMI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 38
+  },
+  "mk_meslek_hukuku_ders_lesson_yuksek_kalite_6_pdf": {
+   "file": "334aee8963feabba420e.bin",
+   "size": 3342440,
+   "title": "Mali Kampüs · Ders 4 · GÜNCELLEME TARİHİ:",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 38
+  },
+  "mk_ekonomi_kamp_kamp_12_pdf": {
+   "file": "5369195595d89f093c8e.bin",
+   "size": 469367,
+   "title": "Mali Kampüs · Kamp 20 · TÜRMOB-TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 6
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_13_pdf": {
+   "file": "377024f32c86fc6c53ac.bin",
+   "size": 689004,
+   "title": "Mali Kampüs · Ders 21 · Gayrı Safi Milli Hasıla (GSMH): Bir ekonomide, belirli bir d",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 30
+  },
+  "mk_meslek_hukuku_ders_lesson_yuksek_kalite_7_pdf": {
+   "file": "2cfdaeba56814cc36d53.bin",
+   "size": 2261144,
+   "title": "Mali Kampüs · Ders 5 · GÜNCELLEME TARİHİ:",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 32
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_14_pdf": {
+   "file": "3344345be7895f020a3b.bin",
+   "size": 549788,
+   "title": "Mali Kampüs · Ders 22 · Para Nedir?",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 28
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_15_pdf": {
+   "file": "0d2c723843add3a00ee9.bin",
+   "size": 451500,
+   "title": "Mali Kampüs · Ders 23 · Temel Varsayımlar",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 28
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_16_pdf": {
+   "file": "e2263be9a4f7fd719932.bin",
+   "size": 226595,
+   "title": "Mali Kampüs · Ders 24 · ya MAL PiYASASI DENGESİ (1S EĞRİSİi)",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 10
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_17_pdf": {
+   "file": "bdcae93cf80d3f90a9c6.bin",
+   "size": 137646,
+   "title": "Mali Kampüs · Ders 25 · TOPLAM TALEP(AD) EĞRİSİ: Çeşitli fiyatlar düzeyinde üzerinde",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 6
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_18_pdf": {
+   "file": "64dcd6f1b08f93bfdee4.bin",
+   "size": 1318389,
+   "title": "Mali Kampüs · Ders 26 · Aşağıdakilerden hangisi dünya ülkeleri arasında en yüksek ta",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 91
+  },
+  "mk_meslek_hukuku_kamp_lesson_yuksek_kalite_8_pdf": {
+   "file": "c323e59b40a20d1f06cb.bin",
+   "size": 5895364,
+   "title": "Mali Kampüs · Kamp 6 · 2026/2 SGS MESLEK HUKUKU",
+   "kind": "doc",
+   "subject": "mes",
+   "count": 84
+  },
+  "mk_ekonomi_lesson_yuksek_kalite_19_pdf": {
+   "file": "10fcd4daff6ae8a2e38d.bin",
+   "size": 3389094,
+   "title": "Mali Kampüs · Ders 27 · 26/2 SGS EKONOMİ",
+   "kind": "doc",
+   "subject": "eko",
+   "count": 79
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "3a4c5c48e9cec2353eaa.bin",
+   "size": 877702,
+   "title": "Mali Kampüs · Ders 1 · Ticaret Hukuku",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 38
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_1_pdf": {
+   "file": "5cf66ee7ed747883a60c.bin",
+   "size": 2848981,
+   "title": "Mali Kampüs · Ders 1 · OK milan",
+   "kind": "doc",
+   "subject": "is",
+   "count": 37
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_4_pdf": {
+   "file": "01df8e5c8af44d45b44f.bin",
+   "size": 905213,
+   "title": "Mali Kampüs · Ders 2 · Konu Başlıkları",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 51
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_2_pdf": {
+   "file": "c11cffca8b3ac9f3b9c9.bin",
+   "size": 2307523,
+   "title": "Mali Kampüs · Ders 2 · İŞ VE SOSYAL GÜVENLİK HUKUKU DERS NOTLARI",
+   "kind": "doc",
+   "subject": "is",
+   "count": 33
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "b3a052d25f6c733e1c12.bin",
+   "size": 1278077,
+   "title": "Mali Kampüs · Ders 3 · Konu 1— Ticari İşletme",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 60
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_3_pdf": {
+   "file": "5fa2e26a9faaec71e91b.bin",
+   "size": 2054026,
+   "title": "Mali Kampüs · Ders 3 · İŞ VE SOSYAL GÜVENLİK HUKUKU DERS NOTLARI",
+   "kind": "doc",
+   "subject": "is",
+   "count": 31
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_4_pdf": {
+   "file": "79926b80ddfa00bede8b.bin",
+   "size": 2643838,
+   "title": "Mali Kampüs · Ders 4 · AV.BİLGE NUR SİVEREKLİ",
+   "kind": "doc",
+   "subject": "is",
+   "count": 38
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_6_pdf": {
+   "file": "ebff0305f85eb22dd3bd.bin",
+   "size": 2253061,
+   "title": "Mali Kampüs · Ders 4 · Soru 1. TTK m.645 anlamında kıymetli evrak için",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 55
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_7_pdf": {
+   "file": "fa8ede86a3fd29410235.bin",
+   "size": 622021,
+   "title": "Mali Kampüs · Ders 5 · Kıymetli Evrak Kavramı ak",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 30
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_5_pdf": {
+   "file": "0f870b9614b086446c7c.bin",
+   "size": 2370340,
+   "title": "Mali Kampüs · Ders 5 · AV.BİLGE NUR SİVEREKLİ",
+   "kind": "doc",
+   "subject": "is",
+   "count": 36
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_6_pdf": {
+   "file": "6f9256cadea0e795c5c0.bin",
+   "size": 342982,
+   "title": "Mali Kampüs · Ders 6 · Temel Kavramlar (Işçi-Işveren-Işyeri)",
+   "kind": "doc",
+   "subject": "is",
+   "count": 12
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_7_pdf": {
+   "file": "61774f9538dca4538757.bin",
+   "size": 415985,
+   "title": "Mali Kampüs · Ders 7 · 4. Aşağıdakilerden hangisi İş Hukuku'nun \"resmi\" kaynakların",
+   "kind": "doc",
+   "subject": "is",
+   "count": 13
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_8_pdf": {
+   "file": "97105d0bca46a2e12feb.bin",
+   "size": 344437,
+   "title": "Mali Kampüs · Ders 8 · B) Günde 3 saat - 2 ay içinde",
+   "kind": "doc",
+   "subject": "is",
+   "count": 10
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_8_pdf": {
+   "file": "9b9862f1a97194cfbf67.bin",
+   "size": 1118703,
+   "title": "Mali Kampüs · Ders 6 · v in ” : > “ iii “3 ği pa e RR",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 53
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_9_pdf": {
+   "file": "53d1ab4f5b7ab0d49295.bin",
+   "size": 382667,
+   "title": "Mali Kampüs · Ders 9 · 4. Kıdemi 3 yıl ve üzeri olan bir işçinin iş sözleşmesi fesh",
+   "kind": "doc",
+   "subject": "is",
+   "count": 10
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_10_pdf": {
+   "file": "02014a722047b279ee82.bin",
+   "size": 363511,
+   "title": "Mali Kampüs · Ders 10 · 3. İşçi sendikalarına üye olabilmek için kaç yaşını doldurmu",
+   "kind": "doc",
+   "subject": "is",
+   "count": 11
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_9_pdf": {
+   "file": "d026ba462bebf5a494de.bin",
+   "size": 850178,
+   "title": "Mali Kampüs · Ders 7 · vi i Anonim Şirket Nedir?",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 42
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_11_pdf": {
+   "file": "2bcfe0b671e7ec350d1f.bin",
+   "size": 812933,
+   "title": "Mali Kampüs · Ders 11 · İŞ VE SOSYAL GÜVENLİK HUKUKU DERS NOTLARI",
+   "kind": "doc",
+   "subject": "is",
+   "count": 18
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_12_pdf": {
+   "file": "1e7f79b896c1cd43d559.bin",
+   "size": 355356,
+   "title": "Mali Kampüs · Ders 12 · 4. 5510 sayılı Kanun'a göre, sigortalının işyerinde bulunduğ",
+   "kind": "doc",
+   "subject": "is",
+   "count": 11
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_10_pdf": {
+   "file": "ad12a97087426d4a8762.bin",
+   "size": 905698,
+   "title": "Mali Kampüs · Ders 8",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 37
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_km_sorular_1_pdf": {
+   "file": "e6b8828dff5151f68ce7.bin",
+   "size": 6657234,
+   "title": "Mali Kampüs · Çıkmış sorular 13 · 2025/3 SGS İŞ VE SGK HUKUKU ÇIKMIŞ SORULAR hzl",
+   "kind": "doc",
+   "subject": "is",
+   "count": 73
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_11_pdf": {
+   "file": "2ae47594851eccc3ddeb.bin",
+   "size": 2927374,
+   "title": "Mali Kampüs · Ders 9",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 124
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_km_sorular_2_pdf": {
+   "file": "07df453559f1eb0887fa.bin",
+   "size": 3103080,
+   "title": "Mali Kampüs · Çıkmış sorular 14 · AV.BİLGE NUR SİVEREKLİ",
+   "kind": "doc",
+   "subject": "is",
+   "count": 50
+  },
+  "mk_ticaret_hukuku_ders_lesson_yuksek_kalite_12_pdf": {
+   "file": "b7ffdde8381a779ad50a.bin",
+   "size": 2897413,
+   "title": "Mali Kampüs · Ders 10 · Kıymetli Evrakın Türleri",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 61
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_km_sorular_3_pdf": {
+   "file": "ba5e906525aa4ee54076.bin",
+   "size": 2524827,
+   "title": "Mali Kampüs · Çıkmış sorular 15 · AV.BİLGE NUR SİVEREKLİ",
+   "kind": "doc",
+   "subject": "is",
+   "count": 37
+  },
+  "mk_ticaret_hukuku_kamp_lesson_yuksek_kalite_13_pdf": {
+   "file": "c6d47b969a156a84314f.bin",
+   "size": 4356490,
+   "title": "Mali Kampüs · Kamp 11 · 2026/2 SGS TİCARET HUKUKU",
+   "kind": "doc",
+   "subject": "tic",
+   "count": 80
+  },
+  "mk_i_hukuku_i_ve_sgk_hukuu_km_sorular_4_pdf": {
+   "file": "78030136e602bbac1305.bin",
+   "size": 6657234,
+   "title": "Mali Kampüs · Çıkmış sorular 16 · 2025/3 SGS İŞ VE SGK HUKUKU ÇIKMIŞ SORULAR hzl",
+   "kind": "doc",
+   "subject": "is",
+   "count": 73
+  },
+  "mk_denetim_denetim_lesson_yuksek_kalite_3_pdf": {
+   "file": "4c2aa83f1ac87cf2edb8.bin",
+   "size": 5780729,
+   "title": "Mali Kampüs · Ders 1 · DENETİM Güvence denetimi: Sorumlu taraf dışındaki hedef",
+   "kind": "doc",
+   "subject": "dnt",
+   "count": 40
+  },
+  "mk_vergi_hukuku_ders_lesson_yuksek_kalite_3_pdf": {
+   "file": "105fc42a541642599544.bin",
+   "size": 5598925,
+   "title": "Mali Kampüs · Ders 1 · ANAYASA",
+   "kind": "doc",
+   "subject": "vrg",
+   "count": 86
+  },
+  "mk_vergi_hukuku_ders_lesson_yuksek_kalite_4_pdf": {
+   "file": "3b2c0c6bdd568656ff8b.bin",
+   "size": 5358896,
+   "title": "Mali Kampüs · Ders 2 · İKİNCİ BÖLÜM",
+   "kind": "doc",
+   "subject": "vrg",
+   "count": 63
+  },
+  "mk_vergi_hukuku_ders_lesson_yuksek_kalite_5_pdf": {
+   "file": "784127168f0f5b917950.bin",
+   "size": 1738520,
+   "title": "Mali Kampüs · Ders 3 · 54. 5520 sayılı Kurumlar Vergısı Kanunu'na gore,",
+   "kind": "doc",
+   "subject": "vrg",
+   "count": 26
+  },
+  "mk_vergi_hukuku_ders_lesson_yuksek_kalite_6_pdf": {
+   "file": "d014a465ed1cd1ff4f48.bin",
+   "size": 1707795,
+   "title": "Mali Kampüs · Ders 4 · dernekler, vakıflar, üniversiteler gibi kurumların ticari, s",
+   "kind": "doc",
+   "subject": "vrg",
+   "count": 28
+  },
+  "mk_denetim_denetim_lesson_yuksek_kalite_4_pdf": {
+   "file": "a7ede8d7e078c0623338.bin",
+   "size": 11246028,
+   "title": "Mali Kampüs · Ders 2 · 2026/2 SGS DENETİM",
+   "kind": "doc",
+   "subject": "dnt",
+   "count": 190
+  },
+  "mk_vergi_hukuku_kamp_lesson_yuksek_kalite_7_pdf": {
+   "file": "939f7cf0badf0ec693dd.bin",
+   "size": 3841406,
+   "title": "Mali Kampüs · Kamp 5 · 2026/2 SGS VERGİ HUKUKU",
+   "kind": "doc",
+   "subject": "vrg",
+   "count": 77
+  },
+  "mk_denetim_kamp_lesson_yuksek_kalite_5_pdf": {
+   "file": "cf3f0f8b1c2293ea81f0.bin",
+   "size": 11244885,
+   "title": "Mali Kampüs · Kamp 3 · 2026/2 SGS DENETİM",
+   "kind": "doc",
+   "subject": "dnt",
+   "count": 190
+  },
+  "mk_maliye_lesson_yuksek_kalite_3_pdf": {
+   "file": "082ff6b804bfe605c5f2.bin",
+   "size": 1124201,
+   "title": "Mali Kampüs · Ders 1 · I. KAMU MALIYESININ TANIMI",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 27
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_3_pdf": {
+   "file": "d1a4d2a6e3e4df293d43.bin",
+   "size": 454397,
+   "title": "Mali Kampüs · Kamp 2 · Zİ TÜRMOB-TESMER STAJA GİRİŞ SINAVI Zİ",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_4_pdf": {
+   "file": "78c2e041071e46f239c6.bin",
+   "size": 1319555,
+   "title": "Mali Kampüs · Ders 3 · hi KAMU HARCAMALARI Ja",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 26
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_4_pdf": {
+   "file": "152f459c0f8993ac0fbd.bin",
+   "size": 454750,
+   "title": "Mali Kampüs · Kamp 4 · Zİ TÜRMOB-TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_5_pdf": {
+   "file": "f2e21c1b0a5cdb2489e5.bin",
+   "size": 889377,
+   "title": "Mali Kampüs · Ders 5 · a VERGİNİN TANIMI, AMAÇLARI ve KAPSAMI vamp",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 25
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_5_pdf": {
+   "file": "578d6b8707575fbcacbb.bin",
+   "size": 493820,
+   "title": "Mali Kampüs · Kamp 6 · Zİ TÜRMOB-TESMER STAJA GİRİŞ SINAVI Zİ",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_6_pdf": {
+   "file": "6da078f66d6be9d306b6.bin",
+   "size": 227536,
+   "title": "Mali Kampüs · Ders 7 · BORÇLANMA",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 8
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_6_pdf": {
+   "file": "77eb3c8129c7dbd7627b.bin",
+   "size": 457756,
+   "title": "Mali Kampüs · Kamp 8 · Zİ TÜRMOB - TESMER STAJA GİRİŞ SINAVI izi",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_7_pdf": {
+   "file": "248198eead7b164a1ddb.bin",
+   "size": 435105,
+   "title": "Mali Kampüs · Ders 9 · DEVLET BUTÇESI KAVRAMI VE ÇEŞİTLİ TANIMLARI",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 13
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_7_pdf": {
+   "file": "b882121906fd5ed03648.bin",
+   "size": 364661,
+   "title": "Mali Kampüs · Kamp 10 · TÜRMOB - TESMER STAJA GİRİŞ SINAVI",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_8_pdf": {
+   "file": "d244271993ccc0865cab.bin",
+   "size": 231680,
+   "title": "Mali Kampüs · Ders 11 · TANIMI, ÖZELLİKLERİ VE AMAÇLARI",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 9
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_8_pdf": {
+   "file": "df1a327b6db559b63e67.bin",
+   "size": 470947,
+   "title": "Mali Kampüs · Kamp 12 · Zİ TÜRMOB - TESMER STAJA GİRİŞ SINAVI izi",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_9_pdf": {
+   "file": "2afb25d8d2c8d5c0b4ae.bin",
+   "size": 2280006,
+   "title": "Mali Kampüs · Ders 13 · Kamu maliyesinin birincil ekonomik amacı kaynak kullanımında",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 90
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_9_pdf": {
+   "file": "82e42dede6c1a3d21b16.bin",
+   "size": 358901,
+   "title": "Mali Kampüs · Kamp 14 · Zİ TÜRMOB - TESMER STAJA GİRİŞ SINAVI izi",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_lesson_yuksek_kalite_10_pdf": {
+   "file": "cf19d9ac35e1e6959b26.bin",
+   "size": 2503748,
+   "title": "Mali Kampüs · Ders 15 · 1.Aşağıda sayılanlardan hangisi olumsuz dışsallıkların ortad",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 95
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_10_pdf": {
+   "file": "e77dbc4745812d15d3a6.bin",
+   "size": 405896,
+   "title": "Mali Kampüs · Kamp 16 · Zİ TÜRMOB - TESMER STAJA GİRİŞ SINAVI izi",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_11_pdf": {
+   "file": "230b0c6541fa7958d05a.bin",
+   "size": 378862,
+   "title": "Mali Kampüs · Kamp 17 · Zİ TÜRMOB - TESMER STAJA GİRİŞ SINAVI izi",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_maliye_kamp_lesson_yuksek_kalite_12_pdf": {
+   "file": "28e5fd144f9e79bcb257.bin",
+   "size": 392222,
+   "title": "Mali Kampüs · Kamp 18 · TÜRMOB-TESMER STAJA GÖRĞJSINAVI",
+   "kind": "doc",
+   "subject": "mly",
+   "count": 6
+  },
+  "mk_denemeler_lesson_yuksek_kalite_3_pdf": {
+   "file": "260f67991348958d4168.bin",
+   "size": 2293602,
+   "title": "Mali Kampüs · Deneme 1 · SMMM STAJA GİRİŞ SINAVI mali",
+   "kind": "doc",
+   "subject": "deneme",
+   "count": 29
+  },
+  "mk_denemeler_lesson_yuksek_kalite_4_pdf": {
+   "file": "899a5e710c64668b2b3d.bin",
+   "size": 2236867,
+   "title": "Mali Kampüs · Deneme 2 · SMMM STAJA GİRİŞ SINAVI mali",
+   "kind": "doc",
+   "subject": "deneme",
+   "count": 28
+  },
+  "mk_denemeler_lesson_yuksek_kalite_5_pdf": {
+   "file": "2a48c781483bfce3c4b7.bin",
+   "size": 2360551,
+   "title": "Mali Kampüs · Deneme 3 · SMMM STAJA GİRİŞ SINAVI mali",
+   "kind": "doc",
+   "subject": "deneme",
+   "count": 26
   }
  }
 }

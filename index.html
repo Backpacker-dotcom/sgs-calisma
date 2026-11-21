@@ -97,7 +97,6 @@ const SUBJ = [
   {id:'brc', ad:'Borçlar Hukuku', grup:'Hukuk'},
   {id:'is',  ad:'İş ve SGK Hukuku', grup:'Hukuk'},
   {id:'mes', ad:'Meslek Hukuku', grup:'Hukuk'},
-  {id:'hk',  ad:'Hukuk Grubu (karma)', grup:'Hukuk'},
   {id:'gk',  ad:'Genel Kültür ve Yetenek', grup:'Genel'},
   {id:'ing', ad:'İngilizce', grup:'Genel'},
 ];
@@ -215,7 +214,8 @@ VIEWS.ders=async(sub)=>{
   shell(SUBJ_AD[sub],`
    <div class="card"><div class="stat"><div><b>${st.seen}/${n}</b><span class="mut">görülen soru</span></div><div><b>${pct(st.ok,st.n)}%</b><span class="mut">başarı</span></div><div><b>${st.due}</b><span class="mut">tekrar bekleyen</span></div></div></div>
    ${lp.length?`<h3 class="sec">Sade anlatım</h3>${lp.map(p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">Benim hazırladığım, örnekli anlatım</div></button>`).join('')}`:''}
-   ${dp.length?`<h3 class="sec">Kaynak ders notları</h3>${dp.map(p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} sayfa${S.marks['read_'+p.pid]?' · kaldığın yer: '+(S.marks['read_'+p.pid]+1)+'. sayfa':''}</div></button>`).join('')}`:''}
+   ${(()=>{const pr=dp.filter(p=>!p.pid.startsWith('mk_')),mk=dp.filter(p=>p.pid.startsWith('mk_'));const item=p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} sayfa${S.marks['read_'+p.pid]?' · kaldığın yer: '+(S.marks['read_'+p.pid]+1)+'. sayfa':''}</div></button>`;return (pr.length?`<h3 class="sec">Prensip ders notları</h3>${pr.map(item).join('')}`:'')+(mk.length?`<details class="card" style="padding:10px 14px"><summary><b>Mali Kampüs ders slaytları (${mk.length} bölüm)</b></summary><div style="margin-top:10px">${mk.map(item).join('')}</div></details>`:'')})()}
+   ${false?`<h3 class="sec">Kaynak ders notları</h3>${dp.map(p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} sayfa${S.marks['read_'+p.pid]?' · kaldığın yer: '+(S.marks['read_'+p.pid]+1)+'. sayfa':''}</div></button>`).join('')}`:''}
    ${n?`<h3 class="sec">Soru çöz</h3><div class="row" style="margin-bottom:10px"><button class="btn" data-go='["oturum",{"mode":"yeni","sub":"${sub}"}]'>${S.set.per} yeni soru</button><button class="btn alt" data-go='["oturum",{"mode":"karisik","sub":"${sub}"}]'>Karışık</button>${st.due?`<button class="btn alt" data-go='["oturum",{"mode":"due","sub":"${sub}"}]'>Yanlışlarım (${st.due})</button>`:''}</div>
    ${qp.map(p=>{let seen=0;for(const k in S.ans)if(k.startsWith(p.pid.slice(2)+'-'))seen++;return`<button class="subj" style="margin-bottom:8px" data-go='["oturum",{"mode":"kaynak","pid":"${p.pid}"}]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} soru · ${seen} çözüldü</div><div class="bar"><i style="width:${pct(seen,p.count)}%"></i></div></button>`}).join('')}`:'<div class="card mut">Bu dersin soru bankası hazırlanıyor.</div>'}`,{tab:'dersler'});
 };
@@ -335,6 +335,8 @@ VIEWS.deneme=async()=>{
   for(const p of dp){const pk=await loadPack(p.pid);const groups=[...new Set(pk.questions.map(q=>q.group))];
     groups.forEach((g,k)=>{const id=p.pid+'#'+g;const r=S.denemeler[id];const cnt=pk.questions.filter(q=>q.group===g).length;
       h+=`<button class="subj" style="margin-bottom:8px" data-go='["denemeOturum","${p.pid}",${g}]'><h3>Deneme ${k+1}</h3><div class="mut">${cnt} soru · ${r?(r.done?`Bitti: ${r.ok} doğru (${pct(r.ok,cnt)}%)`:`Devam ediyor: ${Object.keys(r.a||{}).length} cevap`):'Başlanmadı'}</div></button>`})}
+  const md=await packsOf('doc','deneme');
+  if(md.length)h+=`<h3 class="sec">Mali Kampüs denemeleri (kâğıt üzerinde çöz)</h3><p class="mut">Bunlar sayfa olarak açılır; kalemle işaretleyerek çözebilirsin.</p>`+md.map(p=>`<button class="subj" style="margin-bottom:8px" data-go='["okuma","${p.pid}"]'><h3>${esc(p.title)}</h3><div class="mut">${p.count} sayfa</div></button>`).join('');
   shell('Deneme sınavları',h,{back:false,tab:'deneme'});
 };
 VIEWS.denemeOturum=async(pid,g)=>{
