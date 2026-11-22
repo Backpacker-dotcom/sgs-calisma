@@ -76,6 +76,7 @@ table.res{width:100%;border-collapse:collapse;font-size:14px}table.res td,table.
 details.cq.px>summary{color:#2f7a4a}
 details.cq.cl>summary{color:#8a4b00}
 .kutu.hikaye{background:#fff7e8;border-left:4px solid #e0a030}.kutu.guncel{background:#eaf6ff;border-left:4px solid #3a8fd6}
+.lesson button.anl{margin-left:8px;font-size:12px;padding:3px 9px;border-radius:14px;border:1px solid #d9b46a;background:#fff7e8;color:#8a4b00;font-weight:500;vertical-align:middle;cursor:pointer}.lesson .cqq>button.anl{margin:8px 0 0}
 details.cq{margin:14px 0;border:1px solid var(--line,#ddd);border-radius:12px;background:var(--card,#fff)}
 .lesson details.cq>summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--acc)}
 .lesson .cqq{border-top:1px solid var(--line,#e5e5e5);padding:10px 14px}
@@ -126,7 +127,7 @@ const idb = (()=>{let p;function db(){return p||(p=new Promise((res,rej)=>{const
   async function op(store,mode,fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction(store,mode);const r=fn(t.objectStore(store));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})}
   return{get:(s,k)=>op(s,'readonly',o=>o.get(k)),set:(s,k,v)=>op(s,'readwrite',o=>o.put(v,k)),del:(s,k)=>op(s,'readwrite',o=>o.delete(k)),keys:s=>op(s,'readonly',o=>o.getAllKeys())}})();
 
-let S = {ans:{}, marks:{}, denemeler:{}, daily:{}, set:{pen:'any',per:20}, cards:{}, done:{}, dinlet:{}, feyn:{}, saray:{}};
+let S = {ans:{}, marks:{}, denemeler:{}, daily:{}, set:{pen:'any',per:20}, cards:{}, done:{}, dinlet:{}, feyn:{}, saray:{}, takil:[]};
 function loadState(){try{const x=JSON.parse(localStorage.getItem('sgs_state')||'null');if(x)S=Object.assign(S,x)}catch(e){}}
 let saveT; function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem('sgs_state',JSON.stringify(S))}catch(e){toast('Kayıt alanı doldu, yedek alın')}},150)}
 
@@ -221,7 +222,7 @@ VIEWS.bugun=async()=>{
 VIEWS.dersler=async()=>{
   const qp=await packsOf('questions'), dp=await packsOf('doc');
   const has=s=>qp.filter(p=>p.subject===s).reduce((a,p)=>a+p.count,0);
-  let h='';
+  let h=`<button class="subj" style="margin-bottom:12px" data-go='["takil"]'><h3>🤔 Takıldıklarım</h3><div class="mut">${(S.takil||[]).length?S.takil.length+' konu seni bekliyor':'Ders içinde "Anlamadım" dediğin yerler burada toplanır'}</div></button>`;
   for(const g of['Alan','Hukuk','Genel']){
     h+=`<h3 class="sec">${g==='Alan'?'Alan bilgisi (100 soru)':g==='Hukuk'?'Hukuk dersleri (alan bilgisinin parçası)':'Genel kültür ve yabancı dil (30 soru)'}</h3><div class="grid">`;
     for(const s of SUBJ.filter(x=>x.grup===g)){const n=has(s.id),st=subjStats(s.id),docs=dp.filter(p=>p.subject===s.id).length;
@@ -299,19 +300,55 @@ function finishSession(){
 
 /* ---- Ders içi sor ve dinle ---- */
 function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/\s+/g,' ').slice(0,400));u.lang='en-GB';u.rate=0.9;const v=speechSynthesis.getVoices().find(v=>/^en[-_](GB|US)/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast('Bu cihazda sesli okuma yok')}}
-function lessonAsk(pk,sel){
+const ASK_HEAD='SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, sıfırdan başladım ve otelde çalışıyorum. Bana arkadaşımla çalışıyormuşum gibi, sade ve örnekli anlat; mümkünse otel işletmesinden örnek ver.';
+async function clipCopy(t){if(window.SGSAndroid){SGSAndroid.copy(t);return true}try{await navigator.clipboard.writeText(t);return true}catch(e){return false}}
+async function openClaude(t){await clipCopy(t);const u='https://claude.ai/new?q='+encodeURIComponent(t.slice(0,6000));if(window.SGSAndroid)SGSAndroid.open(u);else window.open(u,'_blank')}
+function takilAdd(it){S.takil=S.takil||[];const k=it.pid+'|'+(it.sec||'')+'|'+(it.q||'').slice(0,80);const ex=S.takil.find(x=>x.k===k);if(ex){ex.t=Date.now();ex.n=(ex.n||1)+1;if(it.note)ex.note=it.note}else S.takil.unshift(Object.assign({k,t:Date.now(),n:1},it));save()}
+function takilPrompt(it){const isQ=!!it.q;return `${ASK_HEAD}\n\nDers: ${it.ders} · ${it.title}${it.sec?`\nBölüm: ${it.sec}`:''}\n\n${isQ?`Takıldığım soru:\n${it.q}\n`:`Takıldığım kısım:\n${(it.text||'').slice(0,2500)}\n`}\n${it.note?`Özellikle şunu anlamadım: ${it.note}\n\n`:''}${isQ?'Bu soruyu adım adım çöz, doğru cevabın neden doğru, diğer şıkların neden yanlış olduğunu açıkla. Sonra konuyu bir örnekle pekiştir ve bana benzer 2 soru sor; cevaplarımı bekle.':'Bu kısmı daha ayrıntılı anlat: önce basit bir benzetme, sonra kural, sonra rakamlı bir örnek. Sonunda anlayıp anlamadığımı görmek için bana 2-3 soru sor ve cevaplarımı bekle.'}`}
+function lessonAsk(pk,sel,ctx={}){
+  const it={pid:pk.pid,ders:SUBJ_AD[pk.subject]||'',title:pk.title,sec:ctx.sec||'',text:ctx.text||sel||'',q:ctx.q||''};
   const d=document.createElement('div');d.className='sheet';
-  d.innerHTML=`<div class="card"><h3 style="margin:0 0 8px">Bana sor</h3><p class="mut" style="margin:0 0 8px">Dersin adı${sel?' ve seçtiğin metin':''} otomatik eklenecek. Neyi anlamadığını yaz.</p>${sel?`<p style="font-size:14px;margin:0 0 8px"><i>“${sel.replace(/</g,'&lt;').slice(0,300)}”</i></p>`:''}
-  <textarea id="askt" rows="3" placeholder="Örn: Bunu otelden bir örnekle anlatır mısın? Bana bu konudan 5 soru sorar mısın?"></textarea>
-  <div class="row" style="margin-top:10px"><button class="btn" id="go">Claude'da aç</button><button class="btn alt" id="cp">Sadece kopyala</button><button class="btn alt" id="x">Kapat</button></div></div>`;
+  const prev=(it.q||it.text||'').replace(/</g,'&lt;').slice(0,300);
+  d.innerHTML=`<div class="card"><h3 style="margin:0 0 8px">${ctx.sec||ctx.q?'🤔 Anlamadım':'Bana sor'}</h3><p class="mut" style="margin:0 0 8px">${it.sec?'<b>'+esc(it.sec)+'</b> · ':''}Ders${it.q?', soru ve cevabı':it.text?' ve ilgili metin':''} otomatik eklenecek. İstersen neyi anlamadığını yaz.</p>${prev?`<p style="font-size:14px;margin:0 0 8px;max-height:110px;overflow:auto"><i>“${prev}${(it.q||it.text).length>300?'…':''}”</i></p>`:''}
+  <textarea id="askt" rows="3" placeholder="Örn: Neden C değil de B? / Otelden bir örnekle anlatır mısın?"></textarea>
+  <div class="row" style="margin-top:10px;flex-wrap:wrap"><button class="btn" id="go">Claude'da aç</button><button class="btn alt" id="sv">📌 Listeme ekle</button><button class="btn alt" id="cp">Kopyala</button><button class="btn alt" id="x">Kapat</button></div>
+  <p class="mut" style="font-size:12px;margin:8px 0 0">Claude'da açtığın konular da "Takıldıklarım" listesine düşer.</p></div>`;
   document.body.appendChild(d);
-  const prompt=()=>`SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, sıfırdan başladım ve otelde çalışıyorum. Bana arkadaşımla çalışıyormuşum gibi, sade ve örnekli anlat; mümkünse otel işletmesinden örnek ver.\n\nDers: ${SUBJ_AD[pk.subject]||''} · ${pk.title}\n${sel?`\nTakıldığım metin:\n${sel.slice(0,2500)}\n`:''}\nSorum: ${$('#askt',d).value.trim()||'Bu konuyu bana sade bir şekilde anlatır mısın?'}`;
-  const copy=async t=>{if(window.SGSAndroid){SGSAndroid.copy(t);return true}try{await navigator.clipboard.writeText(t);return true}catch(e){return false}};
-  $('#go',d).onclick=async()=>{const t=prompt();await copy(t);const u='https://claude.ai/new?q='+encodeURIComponent(t.slice(0,6000));if(window.SGSAndroid)SGSAndroid.open(u);else window.open(u,'_blank');d.remove()};
-  $('#cp',d).onclick=async()=>{toast(await copy(prompt())?'Kopyalandı, Claude\'a yapıştırabilirsin':'Kopyalanamadı');d.remove()};
+  const fin=()=>{it.note=$('#askt',d).value.trim();takilAdd(it);return takilPrompt(it)};
+  $('#go',d).onclick=async()=>{const t=fin();await openClaude(t);d.remove()};
+  $('#sv',d).onclick=()=>{fin();toast('Takıldıklarım listesine eklendi');d.remove()};
+  $('#cp',d).onclick=async()=>{toast(await clipCopy(fin())?'Kopyalandı, Claude\'a yapıştırabilirsin':'Kopyalanamadı');d.remove()};
   $('#x',d).onclick=()=>d.remove(); d.onclick=e=>{if(e.target===d)d.remove()};
 }
-
+function bindAnlamadim(pk){
+  const art=$('article.lesson'); if(!art)return;
+  art.querySelectorAll('h3').forEach(h=>{
+    if(h.closest('.cqq,.kutu'))return;
+    const sec=h.textContent.trim();
+    const b=document.createElement('button');b.className='anl';b.type='button';b.textContent='🤔 Anlamadım';
+    b.onclick=e=>{e.stopPropagation();let t='',n=h.nextElementSibling;
+      while(n&&n.tagName!=='H3'){if(!(n.matches&&n.matches('details.cq')))t+=n.innerText.trim()+'\n';n=n.nextElementSibling}
+      lessonAsk(pk,'',{sec,text:t.trim().slice(0,2500)})};
+    h.appendChild(b)});
+  art.querySelectorAll('.cqq').forEach(q=>{
+    let secH=q.closest('details.cq');while(secH&&secH.tagName!=='H3')secH=secH.previousElementSibling;
+    const b=document.createElement('button');b.className='anl';b.type='button';b.textContent='🤔 Anlamadım, anlat';
+    b.onclick=e=>{e.stopPropagation();const stem=(q.querySelector('.cqs')||{}).textContent||'';const opts=[...q.querySelectorAll('.cqo li')].map(li=>li.textContent.trim()).join('\n')||((q.querySelector('.cqo')||{}).textContent||'');const ans=[...q.querySelectorAll('.cqa p')].map(p=>p.textContent.trim()).join('\n');lessonAsk(pk,'',{sec:secH?secH.firstChild.textContent.trim():'',q:`${stem.trim()}\n${opts}\nCevap anahtarı: ${ans||'yok'}`})};
+    q.appendChild(b)});
+}
+VIEWS.takil=async()=>{
+  const L=S.takil||[];
+  const it=x=>`<div class="card" style="margin-bottom:10px"><div class="mut" style="font-size:12px">${new Date(x.t).toLocaleDateString('tr-TR')} · ${esc(x.ders)}${x.n>1?' · '+x.n+'. kez':''}</div><b>${esc(x.title)}</b>${x.sec?`<div>${esc(x.sec)}</div>`:''}<p class="mut" style="font-size:14px;margin:6px 0;max-height:72px;overflow:hidden">${esc((x.q||x.text||'').slice(0,220))}</p>${x.note?`<p style="font-size:14px;margin:0 0 6px">💭 ${esc(x.note)}</p>`:''}
+    <div class="row"><button class="btn small" data-ta="sor" data-k="${esc(x.k)}">Claude'a sor</button><button class="btn alt small" data-go='["okuma","${x.pid}"]'>Derse git</button><button class="btn alt small" data-ta="ok" data-k="${esc(x.k)}">✔ Anladım</button></div></div>`;
+  shell('Takıldıklarım',`<p class="mut">Ders içinde "🤔 Anlamadım" dediğin yerler burada birikir. Anladıklarını işaretle, kalanları istediğinde topluca Claude'a götür.</p>
+   ${L.length?`<div class="row" style="margin-bottom:12px;flex-wrap:wrap"><button class="btn" id="tall">Hepsini Claude'da anlat</button><button class="btn alt" id="tder">Derslere eklensin diye kopyala</button></div>${L.map(it).join('')}`:'<div class="card">Liste boş. Bir derste başlığın yanındaki ya da sorunun altındaki <b>🤔 Anlamadım</b> butonuna bas.</div>'}
+   ${S.takilOk?`<p class="mut">Anladığın konu sayısı: ${S.takilOk}</p>`:''}`,{tab:'dersler'});
+  app.querySelectorAll('[data-ta]').forEach(b=>b.onclick=async()=>{const x=S.takil.find(y=>y.k===b.dataset.k);if(!x)return;
+    if(b.dataset.ta==='sor'){await openClaude(takilPrompt(x))}else{S.takil=S.takil.filter(y=>y!==x);S.takilOk=(S.takilOk||0)+1;save();toast('Harika, listeden çıktı');VIEWS.takil()}});
+  const lst=()=>L.map((x,i)=>`${i+1}) ${x.ders} · ${x.title}${x.sec?' · '+x.sec:''}${x.note?'\n   Notum: '+x.note:''}\n   ${(x.q||x.text||'').replace(/\s+/g,' ').slice(0,400)}`).join('\n\n');
+  const a=$('#tall');if(a)a.onclick=()=>openClaude(`${ASK_HEAD}\n\nAşağıdaki konularda takıldım. Sırayla, her birini ayrı başlık altında anlat; her birinde bir benzetme, bir rakamlı örnek ve bir kontrol sorusu olsun. Bir konuyu bitirince benim cevabımı bekle, sonra diğerine geç.\n\n${lst()}`);
+  const c=$('#tder');if(c)c.onclick=async()=>toast(await clipCopy(`SGS uygulamamdaki "Takıldıklarım" listesi. Bu konuları derslerde daha ayrıntılı anlat, örnek ve soru ekle:\n\n${lst()}`)?'Kopyalandı. Bu listeyi uygulama sohbetimize yapıştır':'Kopyalanamadı');
+};
 /* ---- Sor (Claude) ---- */
 function askSheet(q,c){
   const d=document.createElement('div');d.className='sheet';
@@ -355,14 +392,14 @@ VIEWS.okuma=async(pid,startPage)=>{
   const pk=await loadPack(pid);
   if(pk.kind==='lesson'||pk.kind==='guide'){ // HTML anlatım
     const ing=pk.subject==='ing';
-    shell(pk.title,`<div class="row" style="margin-bottom:8px"><button class="btn small" id="lask">💬 Bu dersle ilgili sor</button>${ing&&window.speechSynthesis?'<button class="btn alt small" id="lsay">🔊 Seçtiğimi dinle</button><span class="mut" style="font-size:13px">İngilizce satıra dokun, okusun.</span>':'<span class="mut" style="font-size:13px">Bir cümleyi seçip sorarsan onu da eklerim.</span>'}</div><article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
+    shell(pk.title,`<div class="row" style="margin-bottom:8px"><button class="btn small" id="lask">💬 Bu dersle ilgili sor</button><button class="btn alt small" data-go='["takil"]'>🤔 Takıldıklarım${(S.takil||[]).length?' ('+S.takil.length+')':''}</button>${ing&&window.speechSynthesis?'<button class="btn alt small" id="lsay">🔊 Seçtiğimi dinle</button><span class="mut" style="font-size:13px">İngilizce satıra dokun, okusun.</span>':'<span class="mut" style="font-size:13px">Bir cümleyi seçip sorarsan onu da eklerim.</span>'}</div><article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
     let lastSel='';const selH=()=>{const t=String(getSelection()).trim();if(t)lastSel=t};document.addEventListener('selectionchange',selH);
     $('#lask').onclick=()=>{lessonAsk(pk,String(getSelection()).trim()||lastSel);lastSel=''};
     if(ing&&window.speechSynthesis){
       $('#lsay').onclick=()=>{const t=String(getSelection()).trim()||lastSel;t?say(t):toast('Önce bir cümle seç')};
       document.querySelectorAll('article.lesson tr').forEach(tr=>{const c=tr.querySelector('td');if(!c||!/[a-z]/i.test(c.textContent)||/[çğıöşüÇĞİÖŞÜ]/.test(c.textContent))return;c.style.cursor='pointer';c.title='Dinle';c.onclick=()=>say(c.textContent)});
     }
-    if(pk.tools)bindDersSonu(pk);return}
+    bindAnlamadim(pk);if(pk.tools)bindDersSonu(pk);return}
   let i=startPage??(S.marks['read_'+pid]||0);
   const show=()=>{S.marks['read_'+pid]=i;save();
     shell(`${pk.title} · ${i+1}/${pk.pages.length}`,`<div class="qwrap page-wrap" id="qw"><img id="qimg" src="${pk.url(pk.pages[i])}" alt="Sayfa ${i+1}"><canvas id="ink"></canvas></div>${inkTools()}
