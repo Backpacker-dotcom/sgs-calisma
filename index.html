@@ -320,6 +320,14 @@ function lessonAsk(pk,sel,ctx={}){
   $('#cp',d).onclick=async()=>{toast(await clipCopy(fin())?'Kopyalandı, Claude\'a yapıştırabilirsin':'Kopyalanamadı');d.remove()};
   $('#x',d).onclick=()=>d.remove(); d.onclick=e=>{if(e.target===d)d.remove()};
 }
+function sesliCalis(pk){
+  const art=$('article.lesson');const secs=[],pts=[];
+  art.querySelectorAll('h3').forEach(h=>{if(!h.closest('.cqq,.kutu'))secs.push(h.firstChild.textContent.trim())});
+  art.querySelectorAll('.kutu.sinav li, .kutu.hikaye li, .kutu.guncel li').forEach(li=>pts.push('- '+li.textContent.replace(/\s+/g,' ').trim()));
+  let notes='';for(const x of pts){if((notes+x).length>3200)break;notes+=x+'\n'}
+  const t=`Seninle SESLİ MODDA, konuşarak çalışacağım; büyük ihtimalle araba kullanıyorum ya da yürüyorum, ekrana bakamıyorum. SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, sıfırdan başladım ve otelde çalışıyorum.\n\nKurallar:\n- Türkçe konuş. Her seferinde 2-4 cümle söyle, sonra dur ve beni dinle.\n- Tablo, madde işareti, emoji, kısaltma kullanma; her şeyi konuşur gibi söyle, rakamları açık açık oku.\n- Konuları sırayla işle: önce basit bir benzetme veya otelden bir örnek, sonra kural. Ardından bana tek bir soru sor ve cevabımı bekle.\n- Yanlış cevap verirsem nazikçe düzelt, aynı şeyi farklı bir örnekle anlat. "Örnek oturmadı" dersem bambaşka bir alandan örnek ver.\n- Sınavda sık sorulan tuzakları ve akılda kalıcı kısaltmaları vurgula.\n- "Geç", "tekrar et", "yavaşla", "özetle" gibi komutlarıma uy.\n- Sonunda zorlandığım noktaları kısaca özetle.\n\nDers: ${SUBJ_AD[pk.subject]||''} · ${pk.title}\nKonu başlıkları: ${secs.join(' / ')}\n\nSınavda öne çıkan noktalar ve hatırlatmalar:\n${notes}\nHazırsan ilk konuyla başla ve bana önce bu konu hakkında ne bildiğimi sor.`;
+  openClaude(t);toast('Mesaj hazır: gönder, sonra sesli modu aç')
+}
 function bindAnlamadim(pk){
   const art=$('article.lesson'); if(!art)return;
   art.querySelectorAll('h3').forEach(h=>{
@@ -392,14 +400,14 @@ VIEWS.okuma=async(pid,startPage)=>{
   const pk=await loadPack(pid);
   if(pk.kind==='lesson'||pk.kind==='guide'){ // HTML anlatım
     const ing=pk.subject==='ing';
-    shell(pk.title,`<div class="row" style="margin-bottom:8px"><button class="btn small" id="lask">💬 Bu dersle ilgili sor</button><button class="btn alt small" data-go='["takil"]'>🤔 Takıldıklarım${(S.takil||[]).length?' ('+S.takil.length+')':''}</button>${ing&&window.speechSynthesis?'<button class="btn alt small" id="lsay">🔊 Seçtiğimi dinle</button><span class="mut" style="font-size:13px">İngilizce satıra dokun, okusun.</span>':'<span class="mut" style="font-size:13px">Bir cümleyi seçip sorarsan onu da eklerim.</span>'}</div><article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
+    shell(pk.title,`<div class="row" style="margin-bottom:8px"><button class="btn small" id="lask">💬 Bu dersle ilgili sor</button><button class="btn small" id="lses">🎙 Sesli çalış</button><button class="btn alt small" data-go='["takil"]'>🤔 Takıldıklarım${(S.takil||[]).length?' ('+S.takil.length+')':''}</button>${ing&&window.speechSynthesis?'<button class="btn alt small" id="lsay">🔊 Seçtiğimi dinle</button><span class="mut" style="font-size:13px">İngilizce satıra dokun, okusun.</span>':'<span class="mut" style="font-size:13px">Bir cümleyi seçip sorarsan onu da eklerim.</span>'}</div><article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
     let lastSel='';const selH=()=>{const t=String(getSelection()).trim();if(t)lastSel=t};document.addEventListener('selectionchange',selH);
     $('#lask').onclick=()=>{lessonAsk(pk,String(getSelection()).trim()||lastSel);lastSel=''};
     if(ing&&window.speechSynthesis){
       $('#lsay').onclick=()=>{const t=String(getSelection()).trim()||lastSel;t?say(t):toast('Önce bir cümle seç')};
       document.querySelectorAll('article.lesson tr').forEach(tr=>{const c=tr.querySelector('td');if(!c||!/[a-z]/i.test(c.textContent)||/[çğıöşüÇĞİÖŞÜ]/.test(c.textContent))return;c.style.cursor='pointer';c.title='Dinle';c.onclick=()=>say(c.textContent)});
     }
-    bindAnlamadim(pk);if(pk.tools)bindDersSonu(pk);return}
+    bindAnlamadim(pk);$('#lses').onclick=()=>sesliCalis(pk);if(pk.tools)bindDersSonu(pk);return}
   let i=startPage??(S.marks['read_'+pid]||0);
   const show=()=>{S.marks['read_'+pid]=i;save();
     shell(`${pk.title} · ${i+1}/${pk.pages.length}`,`<div class="qwrap page-wrap" id="qw"><img id="qimg" src="${pk.url(pk.pages[i])}" alt="Sayfa ${i+1}"><canvas id="ink"></canvas></div>${inkTools()}
