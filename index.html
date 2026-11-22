@@ -300,7 +300,7 @@ function finishSession(){
 
 /* ---- Ders içi sor ve dinle ---- */
 function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/\s+/g,' ').slice(0,400));u.lang='en-GB';u.rate=0.9;const v=speechSynthesis.getVoices().find(v=>/^en[-_](GB|US)/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast('Bu cihazda sesli okuma yok')}}
-const ASK_HEAD='SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, sıfırdan başladım ve otelde çalışıyorum. Bana arkadaşımla çalışıyormuşum gibi, sade ve örnekli anlat; mümkünse otel işletmesinden örnek ver.';
+const ASK_HEAD='SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, sıfırdan başladım ve otelde çalışıyorum. Benimle karşılıklı konuşarak çalış (sesli modda da konuşabilirim): her seferinde kısa anlat, tek bir şeyi açıkla, sonra anladım mı diye sor ve cevabımı bekle. "Örnek oturmadı" dersem aynı şeyi bambaşka bir örnekle anlat; otel, günlük hayat, para gibi farklı alanlardan örnek dene. Uzun listeler yerine sohbet et.';
 async function clipCopy(t){if(window.SGSAndroid){SGSAndroid.copy(t);return true}try{await navigator.clipboard.writeText(t);return true}catch(e){return false}}
 async function openClaude(t){await clipCopy(t);const u='https://claude.ai/new?q='+encodeURIComponent(t.slice(0,6000));if(window.SGSAndroid)SGSAndroid.open(u);else window.open(u,'_blank')}
 function takilAdd(it){S.takil=S.takil||[];const k=it.pid+'|'+(it.sec||'')+'|'+(it.q||'').slice(0,80);const ex=S.takil.find(x=>x.k===k);if(ex){ex.t=Date.now();ex.n=(ex.n||1)+1;if(it.note)ex.note=it.note}else S.takil.unshift(Object.assign({k,t:Date.now(),n:1},it));save()}
