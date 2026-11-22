@@ -284,6 +284,21 @@ function finishSession(){
   <div class="row"><button class="btn" data-go='${JSON.stringify(["oturum",s.f])}'>Bir set daha</button><button class="btn alt" data-tab="bugun">Bugün</button></div>`);
 }
 
+/* ---- Ders içi sor ve dinle ---- */
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/\s+/g,' ').slice(0,400));u.lang='en-GB';u.rate=0.9;const v=speechSynthesis.getVoices().find(v=>/^en[-_](GB|US)/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast('Bu cihazda sesli okuma yok')}}
+function lessonAsk(pk,sel){
+  const d=document.createElement('div');d.className='sheet';
+  d.innerHTML=`<div class="card"><h3 style="margin:0 0 8px">Bana sor</h3><p class="mut" style="margin:0 0 8px">Dersin adı${sel?' ve seçtiğin metin':''} otomatik eklenecek. Neyi anlamadığını yaz.</p>${sel?`<p style="font-size:14px;margin:0 0 8px"><i>“${sel.replace(/</g,'&lt;').slice(0,300)}”</i></p>`:''}
+  <textarea id="askt" rows="3" placeholder="Örn: Bunu otelden bir örnekle anlatır mısın? Bana bu konudan 5 soru sorar mısın?"></textarea>
+  <div class="row" style="margin-top:10px"><button class="btn" id="go">Claude'da aç</button><button class="btn alt" id="cp">Sadece kopyala</button><button class="btn alt" id="x">Kapat</button></div></div>`;
+  document.body.appendChild(d);
+  const prompt=()=>`SMMM Staja Giriş Sınavına (SGS) hazırlanıyorum, sıfırdan başladım ve otelde çalışıyorum. Bana arkadaşımla çalışıyormuşum gibi, sade ve örnekli anlat; mümkünse otel işletmesinden örnek ver.\n\nDers: ${SUBJ_AD[pk.subject]||''} · ${pk.title}\n${sel?`\nTakıldığım metin:\n${sel.slice(0,2500)}\n`:''}\nSorum: ${$('#askt',d).value.trim()||'Bu konuyu bana sade bir şekilde anlatır mısın?'}`;
+  const copy=async t=>{if(window.SGSAndroid){SGSAndroid.copy(t);return true}try{await navigator.clipboard.writeText(t);return true}catch(e){return false}};
+  $('#go',d).onclick=async()=>{const t=prompt();await copy(t);const u='https://claude.ai/new?q='+encodeURIComponent(t.slice(0,6000));if(window.SGSAndroid)SGSAndroid.open(u);else window.open(u,'_blank');d.remove()};
+  $('#cp',d).onclick=async()=>{toast(await copy(prompt())?'Kopyalandı, Claude\'a yapıştırabilirsin':'Kopyalanamadı');d.remove()};
+  $('#x',d).onclick=()=>d.remove(); d.onclick=e=>{if(e.target===d)d.remove()};
+}
+
 /* ---- Sor (Claude) ---- */
 function askSheet(q,c){
   const d=document.createElement('div');d.className='sheet';
@@ -326,7 +341,14 @@ VIEWS.okuma=async(pid,startPage)=>{
   shell('Açılıyor',`<div class="card"><span class="spin"></span> Sayfalar açılıyor…</div>`,{tab:'dersler'});
   const pk=await loadPack(pid);
   if(pk.kind==='lesson'||pk.kind==='guide'){ // HTML anlatım
-    shell(pk.title,`<article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
+    const ing=pk.subject==='ing';
+    shell(pk.title,`<div class="row" style="margin-bottom:8px"><button class="btn small" id="lask">💬 Bu dersle ilgili sor</button>${ing&&window.speechSynthesis?'<button class="btn alt small" id="lsay">🔊 Seçtiğimi dinle</button><span class="mut" style="font-size:13px">İngilizce satıra dokun, okusun.</span>':'<span class="mut" style="font-size:13px">Bir cümleyi seçip sorarsan onu da eklerim.</span>'}</div><article class="card lesson">${td.decode(pk.raw(pk.html))}</article>${pk.tools?dersSonu(pk):''}`,{tab:pk.kind==='guide'?'hafiza':'dersler'});
+    let lastSel='';const selH=()=>{const t=String(getSelection()).trim();if(t)lastSel=t};document.addEventListener('selectionchange',selH);
+    $('#lask').onclick=()=>{lessonAsk(pk,String(getSelection()).trim()||lastSel);lastSel=''};
+    if(ing&&window.speechSynthesis){
+      $('#lsay').onclick=()=>{const t=String(getSelection()).trim()||lastSel;t?say(t):toast('Önce bir cümle seç')};
+      document.querySelectorAll('article.lesson tr').forEach(tr=>{const c=tr.querySelector('td');if(!c||!/[a-z]/i.test(c.textContent)||/[çğıöşüÇĞİÖŞÜ]/.test(c.textContent))return;c.style.cursor='pointer';c.title='Dinle';c.onclick=()=>say(c.textContent)});
+    }
     if(pk.tools)bindDersSonu(pk);return}
   let i=startPage??(S.marks['read_'+pid]||0);
   const show=()=>{S.marks['read_'+pid]=i;save();
