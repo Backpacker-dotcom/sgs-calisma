@@ -115,8 +115,8 @@
    "count": 61
   },
   "l_fm01": {
-   "file": "3ff163acd0c7570f75a2.bin",
-   "size": 184375,
+   "file": "b2f78261ad4596d5c98d.bin",
+   "size": 185613,
    "title": "1 · Muhasebenin dili: varlık, kaynak ve bilanço",
    "kind": "lesson",
    "subject": "fm",
@@ -219,15 +219,15 @@
    "count": 1
   },
   "l_fm02": {
-   "file": "013c5eed409da02cf98d.bin",
-   "size": 98905,
+   "file": "6c111ab962753a0fdf99.bin",
+   "size": 101821,
    "title": "2 · Hazır değerler ve KDV: paranın muhasebesi",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm03": {
-   "file": "4d818a6f1c4a9a3ccd2f.bin",
+   "file": "af33ccb82cdba7366684.bin",
    "size": 122508,
    "title": "3 · Menkul kıymetler: kısa vadeli yatırımlar",
    "kind": "lesson",
@@ -1467,7 +1467,7 @@
    "count": 26
   },
   "g_teknik": {
-   "file": "24ed027d4553b88798fa.bin",
+   "file": "c3755ae12c024bb7ebaf.bin",
    "size": 4378,
    "title": "Hafıza Atölyesi: nasıl çalışacağız?",
    "kind": "guide",
@@ -1475,7 +1475,7 @@
    "count": null
   },
   "t_genel": {
-   "file": "7586bed34e69f8eebfd0.bin",
+   "file": "09afda8a0dcb8d52e68f.bin",
    "size": 1700,
    "title": "Genel kodlar ve farklar",
    "kind": "tools",
@@ -1483,55 +1483,55 @@
    "count": null
   },
   "l_fm04": {
-   "file": "1304bdc7374f223a90ab.bin",
-   "size": 121797,
+   "file": "00e4c8921a8358a562b6.bin",
+   "size": 124405,
    "title": "4 · Ticari alacaklar: acentenin borcu, senet ve şüpheli alacak",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm05": {
-   "file": "6d31ccc28a6a916d4a28.bin",
-   "size": 111167,
+   "file": "9467f28bdfd33150f55b.bin",
+   "size": 112199,
    "title": "5 · Stoklar: minibar şişesinden satılan malın maliyetine",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm06": {
-   "file": "f6ac808d486c2ecc90ab.bin",
-   "size": 85719,
+   "file": "c370f0605d277c89db82.bin",
+   "size": 86337,
    "title": "6 · Diğer dönen varlıklar: peşin kira, tahakkuklar, avanslar",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm07": {
-   "file": "fb5f3fd1d1d254a427e2.bin",
-   "size": 233281,
+   "file": "0a846c395ad5f74c6f29.bin",
+   "size": 234879,
    "title": "7 · Duran varlıklar ve amortisman",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm08": {
-   "file": "9a98d6d2b75d8173df93.bin",
-   "size": 72697,
+   "file": "f648a611670e4b95ebcb.bin",
+   "size": 73862,
    "title": "8 · Borçlar: kredi, tedarikçi, kapora ve bordro",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm09": {
-   "file": "637562459e839a2ff91f.bin",
-   "size": 188991,
+   "file": "40704c6f8fd44afcab0c.bin",
+   "size": 189821,
    "title": "9 · Özkaynaklar: sermaye, yedekler ve kâr dağıtımı",
    "kind": "lesson",
    "subject": "fm",
    "count": null
   },
   "l_fm10": {
-   "file": "73ec8b9da8b26a36db2b.bin",
+   "file": "1fd9572dc092d524dddc.bin",
    "size": 69973,
    "title": "10 · Dönem sonu ve gelir tablosu",
    "kind": "lesson",
@@ -1539,255 +1539,255 @@
    "count": null
   },
   "l_mlt01": {
-   "file": "2763d49751c25e7a121e.bin",
-   "size": 14968,
+   "file": "97481779e4b5387b3032.bin",
+   "size": 17103,
    "title": "1 · Maliyetin dili: harcama, maliyet, gider, zarar",
    "kind": "lesson",
    "subject": "mlt",
    "count": null
   },
   "l_mlt02": {
-   "file": "42c783a646db40832ea8.bin",
-   "size": 26944,
+   "file": "260e8b9446be5b8586a7.bin",
+   "size": 28169,
    "title": "2 · Maliyet sistemleri ve hesaplardaki yolculuk",
    "kind": "lesson",
    "subject": "mlt",
    "count": null
   },
   "l_mlt03": {
-   "file": "11d6127698e1a3e49b59.bin",
-   "size": 64396,
+   "file": "91380fc657cb81431ce8.bin",
+   "size": 65059,
    "title": "3 · Direkt ilk madde ve işçilik",
    "kind": "lesson",
    "subject": "mlt",
    "count": null
   },
   "l_mlt04": {
-   "file": "8f91e4f9a40afc21a008.bin",
-   "size": 72594,
+   "file": "8f48ec9a512a7a331b93.bin",
+   "size": 73691,
    "title": "4 · Gider yerleri ve dağıtım",
    "kind": "lesson",
    "subject": "mlt",
    "count": null
   },
   "l_std01": {
-   "file": "039714d699c91153ccb2.bin",
-   "size": 158377,
+   "file": "7909806c2655430ea256.bin",
+   "size": 161259,
    "title": "1 · Temel: kavramsal çerçeve, TMS 1, 8 ve 10",
    "kind": "lesson",
    "subject": "std",
    "count": null
   },
   "l_std02": {
-   "file": "5fceff2511cc185229e1.bin",
-   "size": 185085,
+   "file": "083d1f9c48ec98645271.bin",
+   "size": 187408,
    "title": "2 · Varlık standartları: TMS 2, 16, 23, 36, 38, 40",
    "kind": "lesson",
    "subject": "std",
    "count": null
   },
   "l_std03": {
-   "file": "5a54a1dad92d0e19046a.bin",
-   "size": 226611,
+   "file": "1a65bbf6113cada2e493.bin",
+   "size": 229944,
    "title": "3 · Yükümlülük, hasılat ve grup standartları",
    "kind": "lesson",
    "subject": "std",
    "count": null
   },
   "l_anz01": {
-   "file": "fb3ebdf14c767cf2a815.bin",
-   "size": 172689,
+   "file": "24825fa1381c09891d35.bin",
+   "size": 173382,
    "title": "1 · Analiz türleri ve teknikleri",
    "kind": "lesson",
    "subject": "anz",
    "count": null
   },
   "l_anz02": {
-   "file": "3bae429e89968b96a6da.bin",
-   "size": 235932,
+   "file": "1e39502033bf832316a3.bin",
+   "size": 239134,
    "title": "2 · Oran analizi: likidite, mali yapı, faaliyet, kârlılık",
    "kind": "lesson",
    "subject": "anz",
    "count": null
   },
   "l_dnt01": {
-   "file": "286d478725a15fcb83b7.bin",
-   "size": 319705,
+   "file": "df6023c09814a39642b2.bin",
+   "size": 322612,
    "title": "1 · Denetimin temeli: türler, risk, kanıt",
    "kind": "lesson",
    "subject": "dnt",
    "count": null
   },
   "l_dnt02": {
-   "file": "f70bdd96b94a99972277.bin",
-   "size": 182847,
+   "file": "3c0064d042af9958a2bf.bin",
+   "size": 185423,
    "title": "2 · Denetçi raporu: dört görüş ve bağımsızlık",
    "kind": "lesson",
    "subject": "dnt",
    "count": null
   },
   "l_vrg01": {
-   "file": "6c83987d55d6f9580ef6.bin",
-   "size": 94449,
+   "file": "e9b60aedad38749b907e.bin",
+   "size": 104553,
    "title": "1 · VUK: temel kavramlar, süreç, zamanaşımı",
    "kind": "lesson",
    "subject": "vrg",
    "count": null
   },
   "l_vrg02": {
-   "file": "a11e6a993ad51077c237.bin",
-   "size": 56658,
+   "file": "594b3ca95dbd656acb94.bin",
+   "size": 63338,
    "title": "2 · VUK: defterler, değerleme, cezalar",
    "kind": "lesson",
    "subject": "vrg",
    "count": null
   },
   "l_vrg03": {
-   "file": "47181ffe0a3b25553672.bin",
-   "size": 79244,
+   "file": "a422c931eabc4cebe3d5.bin",
+   "size": 85247,
    "title": "3 · Gelir Vergisi",
    "kind": "lesson",
    "subject": "vrg",
    "count": null
   },
   "l_vrg04": {
-   "file": "d0e8b00ce12ae599afb8.bin",
-   "size": 85101,
+   "file": "21eed6558f2c3e530f0f.bin",
+   "size": 90142,
    "title": "4 · Kurumlar Vergisi, KDV, konaklama ve diğer vergiler",
    "kind": "lesson",
    "subject": "vrg",
    "count": null
   },
   "l_tic01": {
-   "file": "721c7cd04ae16de0e738.bin",
-   "size": 181460,
+   "file": "ad7e77c85580d746a0e9.bin",
+   "size": 184495,
    "title": "1 · Ticari işletme, tacir ve yardımcıları",
    "kind": "lesson",
    "subject": "tic",
    "count": null
   },
   "l_tic02": {
-   "file": "76de83b51b27ca2d8641.bin",
-   "size": 142116,
+   "file": "0ef7b5422e60c10d5962.bin",
+   "size": 144765,
    "title": "2 · Şirketler hukuku",
    "kind": "lesson",
    "subject": "tic",
    "count": null
   },
   "l_tic03": {
-   "file": "2b73406e58b242633981.bin",
-   "size": 140745,
+   "file": "0d3b570cbe992f787973.bin",
+   "size": 143118,
    "title": "3 · Kıymetli evrak: poliçe, bono, çek",
    "kind": "lesson",
    "subject": "tic",
    "count": null
   },
   "l_brc01": {
-   "file": "f97d3cd78d292a39131b.bin",
-   "size": 162155,
+   "file": "d620bb717a42005f47d6.bin",
+   "size": 165645,
    "title": "1 · Borç ilişkisi ve sözleşme",
    "kind": "lesson",
    "subject": "brc",
    "count": null
   },
   "l_brc02": {
-   "file": "88bdf80d9facf2a4097e.bin",
-   "size": 147421,
+   "file": "0a06ab32aa995d01ca51.bin",
+   "size": 150291,
    "title": "2 · Haksız fiil ve sebepsiz zenginleşme",
    "kind": "lesson",
    "subject": "brc",
    "count": null
   },
   "l_brc03": {
-   "file": "32ff7373982e4b2253e7.bin",
-   "size": 136795,
+   "file": "cd057f3ebd955a6ea385.bin",
+   "size": 140169,
    "title": "3 · İfa, temerrüt, sona erme, zamanaşımı",
    "kind": "lesson",
    "subject": "brc",
    "count": null
   },
   "l_is01": {
-   "file": "320ba65bab138d227c09.bin",
-   "size": 336720,
+   "file": "2ab0c8acaa234214c10f.bin",
+   "size": 346012,
    "title": "1 · İş Kanunu: sözleşme, süreler, izin, fesih",
    "kind": "lesson",
    "subject": "is",
    "count": null
   },
   "l_is02": {
-   "file": "c2533b55aff73043a630.bin",
-   "size": 291798,
+   "file": "ef764bfac83b75b8ffce.bin",
+   "size": 294286,
    "title": "2 · Sendikalar ve sosyal güvenlik",
    "kind": "lesson",
    "subject": "is",
    "count": null
   },
   "l_mes01": {
-   "file": "2ee0b1427da78298415a.bin",
-   "size": 113618,
+   "file": "716e0c560c1fb7d38d03.bin",
+   "size": 115034,
    "title": "1 · 3568 sayılı Kanun: şartlar, işler, yasaklar",
    "kind": "lesson",
    "subject": "mes",
    "count": null
   },
   "l_mes02": {
-   "file": "01d6831ef4fc309bd80c.bin",
-   "size": 259102,
+   "file": "431a3048faf3bbaed8ee.bin",
+   "size": 260016,
    "title": "2 · Odalar, TÜRMOB ve disiplin",
    "kind": "lesson",
    "subject": "mes",
    "count": null
   },
   "l_eko01": {
-   "file": "086891858a170cb22ac0.bin",
-   "size": 14540,
+   "file": "b29d30245a0009e9d0db.bin",
+   "size": 15569,
    "title": "1 · Kıtlık, arz, talep ve esneklik",
    "kind": "lesson",
    "subject": "eko",
    "count": null
   },
   "l_eko02": {
-   "file": "86e6ff3b9f164b6072c5.bin",
-   "size": 39127,
+   "file": "12f363242022e87c4772.bin",
+   "size": 40743,
    "title": "2 · Üretim, maliyet ve piyasa türleri",
    "kind": "lesson",
    "subject": "eko",
    "count": null
   },
   "l_eko03": {
-   "file": "495c4d48367aa0ff4d45.bin",
-   "size": 86728,
+   "file": "926514c0d13ca0275edc.bin",
+   "size": 89006,
    "title": "3 · Milli gelir, para, enflasyon, dış ticaret",
    "kind": "lesson",
    "subject": "eko",
    "count": null
   },
   "l_mly01": {
-   "file": "4a4edf81e120a17dc77a.bin",
-   "size": 67084,
+   "file": "a453c9431a9337d595e3.bin",
+   "size": 68733,
    "title": "1 · Kamu malları ve kamu harcamaları",
    "kind": "lesson",
    "subject": "mly",
    "count": null
   },
   "l_mly02": {
-   "file": "67639aabbb6758bbf525.bin",
-   "size": 70941,
+   "file": "186192be22aeb0d6205b.bin",
+   "size": 73155,
    "title": "2 · Kamu gelirleri ve vergi teorisi",
    "kind": "lesson",
    "subject": "mly",
    "count": null
   },
   "l_mly03": {
-   "file": "00df6c75aee038e05dcf.bin",
-   "size": 66018,
+   "file": "9d091c16d54dbc752f26.bin",
+   "size": 67697,
    "title": "3 · Devlet borçları ve bütçe",
    "kind": "lesson",
    "subject": "mly",
    "count": null
   },
   "l_gk01": {
-   "file": "312ebe477d128a0fbee4.bin",
+   "file": "e1577c3bd706b395b23e.bin",
    "size": 7833,
    "title": "1 · Türkçe: sözcükte ve cümlede anlam",
    "kind": "lesson",
@@ -1795,15 +1795,15 @@
    "count": null
   },
   "l_gk02": {
-   "file": "47a07ab7d6bf308e975b.bin",
-   "size": 8108,
+   "file": "a46908a4f3fa51a9dfe4.bin",
+   "size": 8619,
    "title": "2 · Türkçe: yazım ve noktalama",
    "kind": "lesson",
    "subject": "gk",
    "count": null
   },
   "l_gk03": {
-   "file": "476ed28cb8d5474cb66f.bin",
+   "file": "1ba38b622721a14e174b.bin",
    "size": 7518,
    "title": "3 · Türkçe: paragraf ve anlatım bozuklukları",
    "kind": "lesson",
@@ -1811,47 +1811,47 @@
    "count": null
   },
   "l_gk04": {
-   "file": "a2c3095f7ae560404bcb.bin",
-   "size": 7232,
+   "file": "ac56e5bb6cf344e21514.bin",
+   "size": 7698,
    "title": "4 · Matematik: sayılar, üsler, çarpanlar",
    "kind": "lesson",
    "subject": "gk",
    "count": null
   },
   "l_gk05": {
-   "file": "ff694878840aa8666ab0.bin",
-   "size": 7021,
+   "file": "334c0a0cc501bda3c993.bin",
+   "size": 7386,
    "title": "5 · Matematik: problemler ve fonksiyonlar",
    "kind": "lesson",
    "subject": "gk",
    "count": null
   },
   "l_gk06": {
-   "file": "4f4580d49e61f066ea28.bin",
-   "size": 10516,
+   "file": "e04de770c8eeeea7dd1f.bin",
+   "size": 11518,
    "title": "6 · Tarih: Millî Mücadele ve Atatürk dönemi",
    "kind": "lesson",
    "subject": "gk",
    "count": null
   },
   "l_gk07": {
-   "file": "4c10e6d442b12e20af59.bin",
-   "size": 8982,
+   "file": "ac4f42180fd051931ca8.bin",
+   "size": 9429,
    "title": "7 · Vatandaşlık: Anayasa ve devletin yapısı",
    "kind": "lesson",
    "subject": "gk",
    "count": null
   },
   "l_ing01": {
-   "file": "2f1445a57c0acd071443.bin",
-   "size": 7783,
+   "file": "bee255d667933e508aa6.bin",
+   "size": 8265,
    "title": "1 · SGS köşesi: article, preposition, tag",
    "kind": "lesson",
    "subject": "ing",
    "count": null
   },
   "l_ing02": {
-   "file": "f1a0e87948d4925506c6.bin",
+   "file": "8d8696652390a0a7d498.bin",
    "size": 7400,
    "title": "2 · SGS köşesi: zamanlar, modal, karşılaştırma",
    "kind": "lesson",
@@ -1859,15 +1859,15 @@
    "count": null
   },
   "l_ing03": {
-   "file": "344df231b8c413aff592.bin",
-   "size": 7002,
+   "file": "d95943acd5049a25fdd0.bin",
+   "size": 7393,
    "title": "3 · SGS köşesi: relative, passive, if, okuma",
    "kind": "lesson",
    "subject": "ing",
    "count": null
   },
   "l_ing04": {
-   "file": "25023efbcbddf3e9b89d.bin",
+   "file": "df939855fc995c45caed.bin",
    "size": 7296,
    "title": "4 · Otel: karşılama, check-in, check-out",
    "kind": "lesson",
@@ -1875,15 +1875,15 @@
    "count": null
   },
   "l_ing05": {
-   "file": "b504d5e6bba44d9b44d3.bin",
-   "size": 7176,
+   "file": "b5766bc7b5695cf1ed44.bin",
+   "size": 7567,
    "title": "5 · Otel: telefon, rezervasyon, e-posta",
    "kind": "lesson",
    "subject": "ing",
    "count": null
   },
   "l_ing06": {
-   "file": "f41642665ffe7e143f4a.bin",
+   "file": "c00b0d4711b9a24d61ff.bin",
    "size": 7062,
    "title": "6 · Otel: şikâyet, sorun çözme, öneri",
    "kind": "lesson",
@@ -1891,32 +1891,32 @@
    "count": null
   },
   "l_vrg05": {
-   "file": "c8108762e272737bf4f8.bin",
-   "size": 76144,
+   "file": "533d218d7d86168d21d1.bin",
+   "size": 81317,
    "title": "5 · Sınavın sevdiği diğer konular: 6183, emlak, damga, veraset, ÖTV",
    "kind": "lesson",
    "subject": "vrg",
    "count": null
   },
   "l_mes03": {
-   "file": "d1e14394d914bd39cd11.bin",
-   "size": 416174,
+   "file": "b86cb2ed8e3ad2798d77.bin",
+   "size": 417052,
    "title": "3 · Yönetmelikler: çalışma usulü, etik, reklam ve ücret",
    "kind": "lesson",
    "subject": "mes",
    "count": null
   },
   "l_dnt03": {
-   "file": "4e817ae51c95136f890a.bin",
-   "size": 311834,
+   "file": "346b84a19947f354a702.bin",
+   "size": 313129,
    "title": "3 · Denetim süreci: kabul, planlama, hile, örnekleme, hesaplar, tamamlama",
    "kind": "lesson",
    "subject": "dnt",
    "count": null
   },
   "l_mlt05": {
-   "file": "be502311425e2e030c43.bin",
-   "size": 168779,
+   "file": "9bf643c44afca5af826b.bin",
+   "size": 173473,
    "title": "5 · Sipariş, safha, birleşik ürün, standart maliyet, başabaş",
    "kind": "lesson",
    "subject": "mlt",
